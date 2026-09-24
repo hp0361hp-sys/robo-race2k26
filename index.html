@@ -3,475 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07101d">
-<meta name="description" content="Robo Race 2K26 — SDM Polytechnic Ujire, 574240. Build, race and conquer.">
-<link rel="icon" type="image/png" href="college-logo.png">
-<title>Robo Race 2K26 | SDM Polytechnic Ujire</title>
+<title>ROBO RACE 2K26 | SDM Polytechnic Ujire</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap');
-
-:root{
-  --bg:#050b13; --panel:#0b1624; --panel2:#0f2032; --line:rgba(0,214,255,.22);
-  --cyan:#20dfff; --blue:#1388ff; --orange:#ff7a18; --gold:#ffbd45;
-  --text:#eef7ff; --muted:#a9bacb; --green:#25d366;
-  --shadow:0 18px 60px rgba(0,0,0,.38);
-}
-*{box-sizing:border-box;scroll-behavior:smooth}
-html{scroll-padding-top:92px}
-body{margin:0;background:
-radial-gradient(circle at 20% 0%,rgba(0,170,255,.11),transparent 30%),
-radial-gradient(circle at 90% 10%,rgba(255,102,0,.10),transparent 25%),
-var(--bg);color:var(--text);font-family:Rajdhani,Arial,sans-serif;font-size:18px;line-height:1.45}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#07111f;color:#fff}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button,input,select{font:inherit}
-.container{width:min(1180px,92%);margin:auto}
-.section{padding:92px 0;position:relative}
-.section-title{font-family:Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(1.7rem,4vw,3rem);margin:0 0 12px}
-.section-title span{color:var(--cyan)}
-.section-sub{color:var(--muted);max-width:760px;margin:0 0 35px}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(8,25,42,.72);color:#bdefff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:14px 20px;font-weight:800;cursor:pointer;transition:.25s;min-height:50px}
-.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#00111a;box-shadow:0 10px 35px rgba(0,185,255,.22)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(0,185,255,.35)}
-.btn-outline{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
-.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
-.btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
-.grid{display:grid;gap:18px}
-.cards-4{grid-template-columns:repeat(4,1fr)}
-.cards-3{grid-template-columns:repeat(3,1fr)}
-.cards-2{grid-template-columns:repeat(2,1fr)}
-.card{background:linear-gradient(145deg,rgba(15,32,50,.94),rgba(7,18,30,.94));border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:var(--shadow);transition:.25s;position:relative;overflow:hidden}
-.card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(32,223,255,.06),transparent 45%,rgba(255,122,24,.05));pointer-events:none}
-.card:hover{transform:translateY(-5px);border-color:rgba(32,223,255,.48)}
-.icon{font-size:2rem;margin-bottom:10px}
-.muted{color:var(--muted)}
-.center{text-align:center}
-
-/* NAV */
-.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(3,9,16,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav{min-height:78px;display:flex;align-items:center;gap:18px}
-.brand{display:flex;align-items:center;gap:10px;min-width:max-content;font-family:Orbitron,sans-serif;font-size:.86rem;font-weight:800}
-.brand img{width:48px;height:48px;object-fit:contain}
-.nav-links{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex:1}
-.nav-links a{padding:10px 10px;border-radius:9px;font-size:.88rem;font-weight:700;color:#d9e9f6;white-space:nowrap}
-.nav-links a:hover{background:rgba(32,223,255,.09);color:var(--cyan)}
-.menu{display:none;margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:10px;padding:10px 12px}
-
-/* HERO */
-.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:110px 0 55px;background:
-linear-gradient(90deg,rgba(3,9,16,.94) 0%,rgba(3,9,16,.68) 43%,rgba(3,9,16,.30) 100%),
-linear-gradient(0deg,rgba(3,9,16,.88),transparent 42%),
-url('roborace-hero.png') center/cover no-repeat}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 45%,rgba(32,223,255,.08) 55%,transparent 67%);mix-blend-mode:screen;pointer-events:none}
-.hero-content{position:relative;z-index:2;width:min(1180px,92%)}
-.hero-logo{width:92px;filter:drop-shadow(0 0 20px rgba(32,223,255,.2));margin-bottom:18px}
-.hero-kicker{font-weight:800;color:var(--orange);letter-spacing:.22em;text-transform:uppercase}
-.hero h1{font-family:Orbitron,sans-serif;font-size:clamp(3rem,9vw,7.5rem);line-height:.92;margin:10px 0 18px;letter-spacing:-.05em;text-shadow:0 0 35px rgba(32,223,255,.16)}
-.hero h1 em{font-style:normal;color:var(--cyan)}
-.hero p{font-size:clamp(1.05rem,2.2vw,1.35rem);color:#d8e8f4;max-width:720px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
-.host{color:#b8cbd9;font-weight:700}
-.host strong{color:#fff}
-.countdown{display:grid;grid-template-columns:repeat(4,120px);gap:12px;margin-top:30px}
-.timebox{padding:16px 10px;text-align:center;background:rgba(5,13,22,.74);border:1px solid rgba(32,223,255,.25);border-radius:16px;backdrop-filter:blur(10px)}
-.timebox b{display:block;font:800 2.2rem Orbitron;color:var(--cyan)}
-.timebox small{text-transform:uppercase;color:#a9bbc9;font-weight:700;letter-spacing:.12em}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.05fr 1.5fr;gap:30px;align-items:stretch}
-.about-panel{padding:32px;border-radius:24px;background:linear-gradient(145deg,#0b1b2b,#07111c);border:1px solid var(--line)}
-.skill-card{padding:20px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)}
-.skill-card h3{margin:5px 0 4px;font-size:1.1rem}
-.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-
-/* PRIZES */
-.prize{min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
-.prize .place{font:800 2rem Orbitron}
-.prize.first{border-color:rgba(255,189,69,.48);box-shadow:0 18px 65px rgba(255,130,20,.09)}
-.prize.second{border-color:rgba(170,205,230,.35)}
-.prize .place{color:var(--gold)}
-.prize.second .place{color:#d8e5ef}
-.prize ul,.rules ul{padding-left:20px;margin-bottom:0}
-.prize li,.rules li{margin:7px 0}
-
-/* RULES */
-.rules{height:100%}
-.rules h3{font-family:Orbitron;font-size:1rem;letter-spacing:.04em;color:var(--cyan);text-transform:uppercase}
-.rules .num{font:800 2rem Orbitron;color:var(--orange);float:right}
-
-/* MEDIA */
-.media-card{padding:0;overflow:hidden}
-.media-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
-.media-body{padding:18px 20px}
-.media-tag{font-size:.75rem;color:var(--orange);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
-
-/* REGISTRATION */
-.form-shell{background:linear-gradient(145deg,rgba(10,27,44,.96),rgba(5,13,22,.96));border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:var(--shadow)}
-.form-top{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-label{display:block;font-weight:700;color:#d9e9f4;margin-bottom:6px}
-input,select{width:100%;padding:13px 14px;border-radius:11px;border:1px solid rgba(255,255,255,.12);background:#07131f;color:#fff;outline:none}
-input:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(32,223,255,.08)}
-.member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.member{border:1px solid rgba(32,223,255,.17);background:rgba(7,18,30,.76);border-radius:18px;padding:20px}
-.member.leader{border-color:rgba(255,122,24,.35)}
-.member-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
-.member-head h3{margin:0;font-family:Orbitron;font-size:1rem}
-.member-badge{font-size:.72rem;text-transform:uppercase;color:#001018;background:var(--cyan);border-radius:999px;padding:5px 8px;font-weight:900}
-.member.leader .member-badge{background:var(--orange)}
-.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field.full{grid-column:1/-1}
-.form-note{margin-top:14px;color:#94a9b8;font-size:.9rem}
-.form-submit{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.contact-card h3{margin:0 0 5px;font-family:Orbitron;font-size:.95rem}
-.phone{font-size:1.1rem;font-weight:800}
-.wa{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:#001b0c;border-radius:9px;padding:9px 12px;font-weight:900;margin-top:12px}
-.email{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:1.05rem;font-weight:800}
-
-/* FOOTER */
-footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.footer-brand{display:flex;align-items:center;gap:10px;font-family:Orbitron;font-size:.82rem;font-weight:700}
-.footer-brand img{width:42px;height:42px;object-fit:contain}
-
-/* MOBILE */
-@media(max-width:1050px){
-  .nav-links a{font-size:.76rem;padding:9px 7px}
-  .brand span{display:none}
-  .cards-4{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:800px){
-  body{font-size:17px}
-  .nav{min-height:70px}
-  .menu{display:block}
-  .nav-links{display:none;position:absolute;top:70px;left:0;right:0;padding:10px 4%;background:rgba(3,9,16,.98);border-bottom:1px solid rgba(255,255,255,.08);flex-direction:column;align-items:stretch}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1rem;padding:13px 14px}
-  .hero{min-height:auto;padding:125px 0 55px;background-position:62% center}
-  .hero-content{text-align:center}
-  .hero-logo{margin:0 auto 18px}
-  .hero p{margin-left:auto;margin-right:auto}
-  .hero-actions{justify-content:center}
-  .countdown{grid-template-columns:repeat(2,1fr);max-width:390px;margin-left:auto;margin-right:auto}
-  .about-grid,.cards-3,.cards-2,.member-grid{grid-template-columns:1fr}
-  .skill-grid{grid-template-columns:1fr 1fr}
-  .form-top{grid-template-columns:1fr}
-  .field-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .section{padding:70px 0}
-  .footer-inner{flex-direction:column;text-align:center}
-}
-@media(max-width:430px){
-  .container{width:91%}
-  .hero h1{font-size:3.15rem}
-  .countdown{gap:8px}
-  .timebox{padding:13px 7px}
-  .timebox b{font-size:1.6rem}
-  .cards-4{grid-template-columns:1fr}
-  .skill-grid{grid-template-columns:1fr}
-  .form-shell{padding:18px}
-  .member{padding:15px}
-}
+.container{width:min(1100px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:100;background:#08111eeF;border-bottom:1px solid #26364b;padding:14px 0}
+.navin{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-weight:900;color:#ffd54a}
+.links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.hero{min-height:88vh;display:flex;align-items:center;text-align:center;padding:60px 0;background:linear-gradient(135deg,#07111f,#10243d)}
+.hero img{max-width:180px;max-height:100px;object-fit:contain;margin:8px}
+h1{font-size:clamp(42px,8vw,82px);margin:20px 0 10px;color:#ffd54a}
+h2{font-size:34px;color:#ffd54a;margin-top:0}
+.hero p{font-size:20px;line-height:1.6}
+.btn{display:inline-block;background:#ffd54a;color:#07111f;border:0;padding:15px 25px;border-radius:8px;font-weight:900;cursor:pointer}
+section{padding:70px 0}
+.card{background:#0d1b2d;border:1px solid #29415f;border-radius:14px;padding:28px;margin:15px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+ul{line-height:1.8}
+.form-shell{max-width:850px;margin:auto}
+label{display:block;margin:15px 0 7px;font-weight:700}
+input,select{width:100%;padding:13px;border-radius:7px;border:1px solid #46617e;background:#fff;color:#111}
+.member{padding:20px;border:1px solid #29415f;border-radius:12px;margin:18px 0}
+.member h3{color:#ffd54a}
+.status{margin-top:18px;padding:16px;border-radius:8px;font-weight:700;display:none}
+.status.submitting{display:block;background:#2d2610;color:#ffd54a}
+.status.success{display:block;background:#10351f;color:#72ff9a}
+.status.error{display:block;background:#3a1515;color:#ff8585}
+footer{padding:30px 0;text-align:center;border-top:1px solid #26364b;color:#b7c3d1}
+@media(max-width:700px){.navin{flex-direction:column}.links{justify-content:center}.hero{min-height:80vh}}
 </style>
+<script>
+(function(){
+  if(history.scrollRestoration) history.scrollRestoration="manual";
+  if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+})();
+</script>
 </head>
 <body>
 
-<header class="nav-wrap">
-  <div class="container nav">
-    <a class="brand" href="#home" aria-label="Robo Race home">
-      <img src="college-logo.png" alt="SDM Polytechnic Ujire logo">
-      <span>ROBO RACE 2K26</span>
-    </a>
-    <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
-    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#contact">Contact</a>
-      <a href="#registration">Registration Form</a>
-      <a href="#glimpses">Previous Event Glimpses</a>
-      <a href="#videos">Robo Car Building Video</a>
-      <a href="#rules">Rules &amp; Regulations</a>
-      <a href="#prizes">Prizes</a>
-      <a href="#about">About</a>
-    </nav>
-  </div>
+<nav>
+<div class="container navin">
+<div class="brand">ROBO RACE 2K26</div>
+<div class="links">
+<a href="#about">About</a>
+<a href="#prizes">Prizes</a>
+<a href="#rules">Rules</a>
+<a href="#registration">Registration</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="container">
+<div>
+<img src="college-logo.png" alt="College Logo">
+<img src="sdm-logo.png" alt="SDM Logo">
+</div>
+<h1>ROBO RACE 2K26</h1>
+<p><b>SDM Polytechnic, Ujire</b></p>
+<p>Build it. Control it. Race it.</p>
+<a class="btn" href="#registration">REGISTER NOW →</a>
+</div>
 </header>
 
-<main id="home">
-<section class="hero">
-  <div class="hero-content">
-    <img class="hero-logo" src="college-logo.png" alt="SDM Polytechnic Ujire">
-    <div class="hero-kicker">SDM Polytechnic Ujire · 574240</div>
-    <h1>ROBO <em>RACE</em> 2K26</h1>
-    <p>Build the machine. Master the track. Race with precision. A high-energy RoboRace experience celebrating Arduino, embedded systems, wireless control, mechanical design and teamwork.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#registration">Register Your Team →</a>
-      <a class="btn btn-outline" href="#rules">View Full Rules</a>
-    </div>
-    <div class="host">Hosted by <strong>Department of Electronics &amp; Communication</strong></div>
-    <div class="countdown" aria-label="Registration deadline countdown">
-      <div class="timebox"><b id="days">--</b><small>Days</small></div>
-      <div class="timebox"><b id="hours">--</b><small>Hours</small></div>
-      <div class="timebox"><b id="minutes">--</b><small>Minutes</small></div>
-      <div class="timebox"><b id="seconds">--</b><small>Seconds</small></div>
-    </div>
-    <p class="muted" style="margin-top:10px">Registration closes: <strong>27 September 2026</strong></p>
-  </div>
+<section id="about">
+<div class="container">
+<h2>About Robo Race 2K26</h2>
+<div class="card">
+<p>Robo Race 2K26 is a robotics racing event where student teams design, build and control their own race robots. Bring your engineering skills, creativity and racing spirit.</p>
+</div>
+</div>
 </section>
 
-<section class="section" id="about">
-  <div class="container">
-    <div class="badge">01 · About Robo Race</div>
-    <h2 class="section-title">Build. <span>Think.</span> Race.</h2>
-    <p class="section-sub">Robo Race 2K26 is designed to challenge students to combine electronics, code, mechanics and real-time decision making into one race-ready robotic vehicle.</p>
-    <div class="about-grid">
-      <div class="about-panel">
-        <h3 style="font-family:Orbitron">The Objective</h3>
-        <p class="muted">Create a reliable robot, tune its control system, understand its mechanical behaviour and complete a demanding obstacle-filled track with your team.</p>
-        <p class="muted">The event encourages practical engineering, innovation and problem solving while giving participants a competitive platform to demonstrate their skills.</p>
-      </div>
-      <div class="skill-grid">
-        <div class="skill-card"><div class="icon">💡</div><h3>Innovation</h3><span class="muted">Turn an idea into a race-ready machine.</span></div>
-        <div class="skill-card"><div class="icon">🔌</div><h3>Embedded Systems</h3><span class="muted">Integrate controllers, sensors and power.</span></div>
-        <div class="skill-card"><div class="icon">⚙️</div><h3>Arduino Programming</h3><span class="muted">Build dependable control logic.</span></div>
-        <div class="skill-card"><div class="icon">📡</div><h3>Wireless Communication</h3><span class="muted">Command your robot with confidence.</span></div>
-        <div class="skill-card"><div class="icon">🛠️</div><h3>Mechanical Design</h3><span class="muted">Balance grip, clearance and durability.</span></div>
-        <div class="skill-card"><div class="icon">🧠</div><h3>Problem Solving</h3><span class="muted">Adapt quickly when the track gets tough.</span></div>
-        <div class="skill-card"><div class="icon">🤝</div><h3>Teamwork</h3><span class="muted">Design, test and race as one team.</span></div>
-        <div class="skill-card"><div class="icon">🏁</div><h3>Race Strategy</h3><span class="muted">Speed matters, but control matters more.</span></div>
-      </div>
-    </div>
-  </div>
+<section id="prizes">
+<div class="container">
+<h2>Prizes</h2>
+<div class="grid">
+<div class="card"><h3>🏆 Winner</h3><p>Exciting cash prize and recognition.</p></div>
+<div class="card"><h3>🥈 Runner Up</h3><p>Exciting cash prize and recognition.</p></div>
+<div class="card"><h3>🎖 Participation</h3><p>Certificates for participating teams.</p></div>
+</div>
+</div>
 </section>
 
-<section class="section" id="prizes">
-  <div class="container">
-    <div class="badge">02 · Prizes</div>
-    <h2 class="section-title">Race for <span>the Podium</span></h2>
-    <p class="section-sub">Exciting recognition for teams that combine speed, engineering and control.</p>
-    <div class="grid cards-3">
-      <article class="card prize first">
-        <div><div class="place">🥇 First Prize</div><p class="muted">For the team finishing at the top of the competition.</p></div>
-        <ul><li>Cash Prize</li><li>Trophy</li><li>Medals</li><li>Certificate</li></ul>
-      </article>
-      <article class="card prize second">
-        <div><div class="place">🥈 Second Prize</div><p class="muted">Recognition for an outstanding race performance.</p></div>
-        <ul><li>Cash Prize</li><li>Trophy</li><li>Medals</li><li>Certificate</li></ul>
-      </article>
-      <article class="card prize">
-        <div><div class="place" style="color:var(--cyan)">🎖 Participation</div><p class="muted">Every participating team gets a participation certificate.</p></div>
-        <ul><li>Participation Certificate</li><li>Memorable event experience</li></ul>
-      </article>
-    </div>
-  </div>
+<section id="rules">
+<div class="container">
+<h2>Rules & Regulations</h2>
+<div class="card">
+<ul>
+<li>Each team can have up to 5 members.</li>
+<li>Participants must provide correct registration details.</li>
+<li>Robot must follow the event's technical and safety requirements.</li>
+<li>Teams must follow instructions given by event coordinators.</li>
+<li>Organizers reserve the right to make final decisions during the event.</li>
+</ul>
+</div>
+</div>
 </section>
 
-<section class="section" id="rules">
-  <div class="container">
-    <div class="badge">03 · Rules &amp; Regulations</div>
-    <h2 class="section-title">Know the <span>Track Rules</span></h2>
-    <p class="section-sub">Read these rules carefully before building and registering your RoboRace vehicle.</p>
-    <div class="grid cards-2">
-      <article class="card rules"><span class="num">01</span><h3>Team Rules</h3><ul><li>4–5 members per team</li><li>One robot per team</li><li>Valid college ID mandatory</li></ul></article>
-      <article class="card rules"><span class="num">02</span><h3>Robot Rules</h3><ul><li>Maximum size: 10 × 10 inches</li><li>Maximum height: 5 inches</li><li>Maximum voltage: 24V DC</li><li>Wired and wireless robots allowed</li><li>Readymade robots not allowed</li></ul></article>
-      <article class="card rules"><span class="num">03</span><h3>Track Rules</h3><ul><li>Slopes</li><li>Sand section</li><li>Rollers</li><li>Speed breakers</li><li>Sharp turns</li><li>Slippery surfaces</li></ul></article>
-      <article class="card rules"><span class="num">04</span><h3>Penalties</h3><ul><li>Maximum 2 hand touches</li><li>5-second penalty after touch limit</li><li>No practice runs on final track</li></ul></article>
-      <article class="card rules" style="grid-column:1/-1"><span class="num">05</span><h3>Event Rules</h3><ul><li>Coordinator decision is final.</li></ul></article>
-    </div>
-  </div>
+<section id="registration">
+<div class="container">
+<h2>Team Registration</h2>
+<div class="card form-shell">
+<form id="registrationForm" method="POST"
+action="https://script.google.com/macros/s/AKfycbzm_ATc-CHFxk8GQb3d19Fk565i8pMPQ168jC_iC3MU2W-hFTNR6wexpH48Gx13M-S3/exec"
+target="registrationFrame">
+
+<label>Team Name</label>
+<input name="teamName" required>
+
+<label>Robot Name</label>
+<input name="roboName" required>
+
+<label>Year</label>
+<select name="year" required>
+<option value="">Select Year</option>
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+</select>
+
+<label>Branch</label>
+<input name="branch" required>
+
+<div class="member">
+<h3>Member 1 — Team Leader</h3>
+<label>Name</label><input name="m1_name" required>
+<label>Mobile Number</label><input name="m1_mobile" required>
+<label>Register Number</label><input name="m1_reg" required>
+</div>
+
+<div class="member">
+<h3>Member 2</h3>
+<label>Name</label><input name="m2_name" required>
+<label>Mobile Number</label><input name="m2_mobile" required>
+<label>Register Number</label><input name="m2_reg" required>
+</div>
+
+<div class="member">
+<h3>Member 3</h3>
+<label>Name</label><input name="m3_name" required>
+<label>Mobile Number</label><input name="m3_mobile" required>
+<label>Register Number</label><input name="m3_reg" required>
+</div>
+
+<div class="member">
+<h3>Member 4</h3>
+<label>Name</label><input name="m4_name" required>
+<label>Mobile Number</label><input name="m4_mobile" required>
+<label>Register Number</label><input name="m4_reg" required>
+</div>
+
+<div class="member">
+<h3>Member 5 — Optional</h3>
+<label>Name</label><input name="m5_name">
+<label>Mobile Number</label><input name="m5_mobile">
+<label>Register Number</label><input name="m5_reg">
+</div>
+
+<button id="submitBtn" class="btn" type="submit">Submit Registration →</button>
+<div id="formStatus" class="status"></div>
+</form>
+
+<iframe name="registrationFrame" id="registrationFrame" style="display:none"></iframe>
+</div>
+</div>
 </section>
 
-<section class="section" id="videos">
-  <div class="container">
-    <div class="badge">04 · Robo Car Building Video</div>
-    <h2 class="section-title">Build Your <span>Robo Car</span></h2>
-    <p class="section-sub">Reference videos shared for RoboRace preparation and inspiration.</p>
-    <div class="grid cards-3">
-      <article class="card media-card"><iframe src="https://www.youtube.com/embed/E5hz_ZBPqKs" title="Robo car building video 1" loading="lazy" allowfullscreen></iframe><div class="media-body"><div class="media-tag">Build Guide</div><strong>Robo Car Making — Video 01</strong></div></article>
-      <article class="card media-card"><iframe src="https://www.youtube.com/embed/oiu_p-ghwzo" title="Robo car building video 2" loading="lazy" allowfullscreen></iframe><div class="media-body"><div class="media-tag">Build Guide</div><strong>Robo Car Making — Video 02</strong></div></article>
-      <article class="card media-card"><iframe src="https://www.youtube.com/embed/Ru8c7IV7KjI" title="Robo car building video 3" loading="lazy" allowfullscreen></iframe><div class="media-body"><div class="media-tag">Build Guide</div><strong>Robo Car Making — Video 03</strong></div></article>
-    </div>
-  </div>
+<section id="contact">
+<div class="container">
+<h2>Contact</h2>
+<div class="grid">
+<div class="card"><h3>SDM Polytechnic, Ujire</h3><p>For Robo Race 2K26 registration and event information.</p></div>
+<div class="card"><h3>Registration Support</h3><p>Please contact the event coordinators for assistance.</p></div>
+</div>
+</div>
 </section>
 
-<section class="section" id="glimpses">
-  <div class="container">
-    <div class="badge">05 · Previous Event Glimpses</div>
-    <h2 class="section-title">See the <span>Action</span></h2>
-    <p class="section-sub">Highlights and glimpses from previous RoboRace activities.</p>
-    <div class="grid cards-2">
-      <article class="card media-card"><iframe src="https://www.youtube.com/embed/eeUZgiB__Ns" title="Previous event glimpse 1" loading="lazy" allowfullscreen></iframe><div class="media-body"><div class="media-tag">Event Glimpse</div><strong>Previous Event — Glimpse 01</strong></div></article>
-      <article class="card media-card"><iframe src="https://www.youtube.com/embed/Dqx5Flpmlvg" title="Previous event glimpse 2" loading="lazy" allowfullscreen></iframe><div class="media-body"><div class="media-tag">Event Glimpse</div><strong>Previous Event — Glimpse 02</strong></div></article>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="registration">
-  <div class="container">
-    <div class="badge">06 · Registration Form</div>
-    <h2 class="section-title">Register Your <span>Team</span></h2>
-    <p class="section-sub">Fill in the details for each team member. Member 1 is the team leader. Member 5 is optional.</p>
-    <form class="form-shell" id="registrationForm" method="POST"
-      action="https://script.google.com/macros/s/AKfycbzm_ATc-CHFxk8GQb3d19Fk565i8pMPQ168jC_iC3MU2W-hFTNR6wexpH48Gx13M-S3/exec"
-      target="registrationFrame">
-      <div class="form-top">
-        <div><label for="teamName">Team Name</label><input id="teamName" name="teamName" required placeholder="Enter team name"></div>
-        <div><label for="robotName">Robo Name</label><input id="robotName" name="roboName" required placeholder="Enter your robot name"></div>
-        <div><label for="teamYear">Year</label><select id="teamYear" name="year" required><option value="">Select Year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option></select></div>
-        <div><label for="teamBranch">Branch</label><select id="teamBranch" name="branch" required><option value="">Select Branch</option><option>EC</option><option>CS</option><option>Civil</option><option>Mechanical</option></select></div>
-      </div>
-
-      <div class="member-grid">
-        <div class="member leader">
-          <div class="member-head"><h3>Member 1</h3><span class="member-badge">Team Leader</span></div>
-          <div class="field-grid">
-            <div class="field full"><label>Full Name</label><input required name="m1_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m1_reg" placeholder="Register Number"></div>
-            <div><label>Mobile Number</label><input required name="m1_mobile" inputmode="tel" placeholder="Mobile Number"></div>
-          </div>
-        </div>
-
-        <div class="member">
-          <div class="member-head"><h3>Member 2</h3><span class="member-badge">Member</span></div>
-          <div class="field-grid">
-            <div class="field full"><label>Full Name</label><input required name="m2_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m2_reg" placeholder="Register Number"></div>
-            <div><label>Mobile Number</label><input required name="m2_mobile" inputmode="tel" placeholder="Mobile Number"></div>
-          </div>
-        </div>
-
-        <div class="member">
-          <div class="member-head"><h3>Member 3</h3><span class="member-badge">Member</span></div>
-          <div class="field-grid">
-            <div class="field full"><label>Full Name</label><input required name="m3_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m3_reg" placeholder="Register Number"></div>
-            <div><label>Mobile Number</label><input required name="m3_mobile" inputmode="tel" placeholder="Mobile Number"></div>
-          </div>
-        </div>
-
-        <div class="member">
-          <div class="member-head"><h3>Member 4</h3><span class="member-badge">Member</span></div>
-          <div class="field-grid">
-            <div class="field full"><label>Full Name</label><input required name="m4_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m4_reg" placeholder="Register Number"></div>
-            <div><label>Mobile Number</label><input required name="m4_mobile" inputmode="tel" placeholder="Mobile Number"></div>
-          </div>
-        </div>
-
-        <div class="member">
-          <div class="member-head"><h3>Member 5</h3><span class="member-badge">Optional</span></div>
-          <div class="field-grid">
-            <div class="field full"><label>Full Name</label><input name="m5_name" placeholder="Full Name (optional)"></div>
-            <div><label>Register Number</label><input name="m5_reg" placeholder="Register Number"></div>
-            <div><label>Mobile Number</label><input name="m5_mobile" inputmode="tel" placeholder="Mobile Number"></div>
-          </div>
-        </div>
-      </div>
-      <div class="form-note">Registration deadline: <strong>27 September 2026</strong>. Your registration is submitted to the Robo Race 2K26 Google Sheets registration system.</div>
-      <div class="form-submit">
-        <button class="btn btn-primary" id="submitBtn" type="submit">Submit Registration →</button>
-        <a class="btn btn-outline" href="#contact">Need Help? Contact Us</a>
-      </div>
-      <div id="formStatus" class="form-note" aria-live="polite"></div>
-    </form>
-    <iframe name="registrationFrame" id="registrationFrame" style="display:none" title="Registration submission"></iframe>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <div class="container">
-    <div class="badge">07 · Contact</div>
-    <h2 class="section-title">Get in <span>Touch</span></h2>
-    <p class="section-sub">For registration assistance and event details, contact the team on WhatsApp or email.</p>
-    <div class="contact-grid">
-      <article class="card contact-card"><h3>Mr. Shreyas</h3><div class="phone">8618080584</div><a class="wa" href="https://wa.me/918618080584" target="_blank" rel="noopener">● WhatsApp</a></article>
-      <article class="card contact-card"><h3>Mr. Shree Hari Prasad</h3><div class="phone">7338630361</div><a class="wa" href="https://wa.me/917338630361" target="_blank" rel="noopener">● WhatsApp</a></article>
-      <article class="card contact-card"><h3>Mr. Gagan</h3><div class="phone">9632664158</div><a class="wa" href="https://wa.me/919632664158" target="_blank" rel="noopener">● WhatsApp</a></article>
-      <article class="card contact-card"><h3>Mr. Akash K</h3><div class="phone">8137840986</div><a class="wa" href="https://wa.me/918137840986" target="_blank" rel="noopener">● WhatsApp</a></article>
-    </div>
-    <div class="card email" style="margin-top:18px">📧 <span>hp0361hp@gmail.com</span></div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div class="footer-brand"><img src="college-logo.png" alt="SDM logo"><span>SDM Polytechnic Ujire, 574240<br>Department of Electronics &amp; Communication</span></div>
-    <div>© 2026 Robo Race 2K26 · Build • Race • Conquer</div>
-  </div>
-</footer>
+<footer>© 2026 SDM Polytechnic, Ujire — ROBO RACE 2K26</footer>
 
 <script>
-const menuBtn=document.getElementById('menuBtn');
-const navLinks=document.getElementById('navLinks');
-menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+const form=document.getElementById("registrationForm");
+const btn=document.getElementById("submitBtn");
+const status=document.getElementById("formStatus");
+let submitted=false;
 
-/* ================= GOOGLE SHEETS REGISTRATION =================
-   Native HTML form POST to Google Apps Script.
-   The hidden iframe is used only to keep the visitor on this page.
-*/
-const registrationForm = document.getElementById('registrationForm');
-const submitBtn = document.getElementById('submitBtn');
-const formStatus = document.getElementById('formStatus');
-const registrationFrame = document.getElementById('registrationFrame');
-let submissionStarted = false;
+form.addEventListener("submit",function(){
+  submitted=false;
+  btn.disabled=true;
+  btn.textContent="Submitting… Please wait";
+  status.className="status submitting";
+  status.textContent="Submitting your registration… Please wait. Do not press the button again.";
+});
 
-registrationForm.addEventListener('submit', function(e) {
-  const endpoint = registrationForm.getAttribute('action') || '';
+window.addEventListener("message",function(e){
+  if(!e.data)return;
 
-  if (!endpoint || endpoint.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
-    e.preventDefault();
-    formStatus.textContent = 'Registration system is not connected yet.';
-    formStatus.style.color = '#ffbd45';
-    return;
+  if(e.data.type==="ROBORACE_SUCCESS"){
+    submitted=true;
+    btn.disabled=true;
+    btn.textContent="✓ Registration Submitted";
+    status.className="status success";
+    status.innerHTML="✅ REGISTRATION SUBMITTED SUCCESSFULLY!<br><span>Please do not submit again.</span>";
+    form.reset();
+    status.scrollIntoView({behavior:"smooth",block:"center"});
   }
 
-  submissionStarted = true;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting…';
-  formStatus.textContent = 'Submitting your registration…';
-  formStatus.style.color = '#20dfff';
-});
-
-registrationFrame.addEventListener('load', function() {
-  if (!submissionStarted) return;
-
-  submissionStarted = false;
-  submitBtn.disabled = false;
-  submitBtn.textContent = 'Submit Registration →';
-  formStatus.textContent = '✓ Registration submitted successfully! Your team details have been sent to the registration system.';
-  formStatus.style.color = '#25d366';
-  registrationForm.reset();
-});
-
-// Always open the website at the top instead of restoring an old scroll position.
-history.scrollRestoration = 'manual';
-window.addEventListener('pageshow', function() {
-  setTimeout(function() {
-    window.scrollTo(0, 0);
-  }, 0);
-});
-
-const target=new Date('2026-09-27T23:59:59');
-function updateCountdown(){
-  let diff=target-new Date();
-  if(diff<=0){
-    ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
-    return;
+  if(e.data.type==="ROBORACE_ERROR"){
+    btn.disabled=false;
+    btn.textContent="Submit Registration →";
+    status.className="status error";
+    status.textContent="❌ Registration failed. Please try again.";
   }
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  document.getElementById('days').textContent=String(d).padStart(2,'0');
-  document.getElementById('hours').textContent=String(h).padStart(2,'0');
-  document.getElementById('minutes').textContent=String(m).padStart(2,'0');
-  document.getElementById('seconds').textContent=String(s).padStart(2,'0');
-}
-updateCountdown(); setInterval(updateCountdown,1000);
+});
+
+window.addEventListener("load",function(){
+  window.scrollTo(0,0);
+});
+window.addEventListener("pageshow",function(){
+  window.scrollTo(0,0);
+});
 </script>
 </body>
 </html>
