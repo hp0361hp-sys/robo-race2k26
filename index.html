@@ -417,7 +417,14 @@ const registrationForm = document.getElementById('registrationForm');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 const registrationFrame = document.getElementById('registrationFrame');
+let registrationPending = false;
 
+/*
+  The form submits directly to Google Apps Script through the hidden iframe.
+  We do NOT use postMessage here because Apps Script's HtmlService can place
+  the response inside its own sandbox frame, which can prevent the message
+  from reaching this page.
+*/
 registrationForm.addEventListener('submit', function(e) {
   const endpoint = registrationForm.getAttribute('action') || '';
 
@@ -428,29 +435,23 @@ registrationForm.addEventListener('submit', function(e) {
     return;
   }
 
+  registrationPending = true;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Submitting…';
   formStatus.textContent = 'Submitting your registration…';
   formStatus.style.color = '#20dfff';
 });
 
-window.addEventListener('message', function(event) {
-  const data = event.data || {};
+/* Fires when the Google Apps Script response finishes loading in the hidden iframe. */
+registrationFrame.addEventListener('load', function() {
+  if (!registrationPending) return;
 
-  if (data.type === 'ROBORACE_SUCCESS') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration successful ✓ Your team details have been saved.';
-    formStatus.style.color = '#25d366';
-    registrationForm.reset();
-  }
-
-  if (data.type === 'ROBORACE_ERROR') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration failed: ' + (data.message || 'Please try again.');
-    formStatus.style.color = '#ff6b6b';
-  }
+  registrationPending = false;
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Submit Registration →';
+  formStatus.textContent = 'Registration submitted ✓ Your team details were sent to the registration server.';
+  formStatus.style.color = '#25d366';
+  registrationForm.reset();
 });
 
 const target=new Date('2026-09-27T23:59:59');
