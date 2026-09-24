@@ -410,48 +410,8 @@ menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
 /* ================= GOOGLE SHEETS REGISTRATION =================
-   Replace the action URL in the <form> with your deployed
-   Google Apps Script Web App URL.
+   Native HTML POST only. No fetch, no preventDefault, no postMessage.
 */
-const registrationForm = document.getElementById('registrationForm');
-const submitBtn = document.getElementById('submitBtn');
-const formStatus = document.getElementById('formStatus');
-const registrationFrame = document.getElementById('registrationFrame');
-
-registrationForm.addEventListener('submit', function(e) {
-  const endpoint = registrationForm.getAttribute('action') || '';
-
-  if (!endpoint || endpoint.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
-    e.preventDefault();
-    formStatus.textContent = 'Registration system is not connected yet.';
-    formStatus.style.color = '#ffbd45';
-    return;
-  }
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting…';
-  formStatus.textContent = 'Submitting your registration…';
-  formStatus.style.color = '#20dfff';
-});
-
-window.addEventListener('message', function(event) {
-  const data = event.data || {};
-
-  if (data.type === 'ROBORACE_SUCCESS') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration successful ✓ Your team details have been saved.';
-    formStatus.style.color = '#25d366';
-    registrationForm.reset();
-  }
-
-  if (data.type === 'ROBORACE_ERROR') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration failed: ' + (data.message || 'Please try again.');
-    formStatus.style.color = '#ff6b6b';
-  }
-});
 
 const target=new Date('2026-09-27T23:59:59');
 function updateCountdown(){
