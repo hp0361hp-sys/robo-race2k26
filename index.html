@@ -410,13 +410,14 @@ menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
 /* ================= GOOGLE SHEETS REGISTRATION =================
-   Replace the action URL in the <form> with your deployed
-   Google Apps Script Web App URL.
+   Native HTML form POST to Google Apps Script.
+   The hidden iframe is used only to keep the visitor on this page.
 */
 const registrationForm = document.getElementById('registrationForm');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 const registrationFrame = document.getElementById('registrationFrame');
+let submissionStarted = false;
 
 registrationForm.addEventListener('submit', function(e) {
   const endpoint = registrationForm.getAttribute('action') || '';
@@ -428,29 +429,30 @@ registrationForm.addEventListener('submit', function(e) {
     return;
   }
 
+  submissionStarted = true;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Submitting…';
   formStatus.textContent = 'Submitting your registration…';
   formStatus.style.color = '#20dfff';
 });
 
-window.addEventListener('message', function(event) {
-  const data = event.data || {};
+registrationFrame.addEventListener('load', function() {
+  if (!submissionStarted) return;
 
-  if (data.type === 'ROBORACE_SUCCESS') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration successful ✓ Your team details have been saved.';
-    formStatus.style.color = '#25d366';
-    registrationForm.reset();
-  }
+  submissionStarted = false;
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Submit Registration →';
+  formStatus.textContent = '✓ Registration submitted successfully! Your team details have been sent to the registration system.';
+  formStatus.style.color = '#25d366';
+  registrationForm.reset();
+});
 
-  if (data.type === 'ROBORACE_ERROR') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration failed: ' + (data.message || 'Please try again.');
-    formStatus.style.color = '#ff6b6b';
-  }
+// Always open the website at the top instead of restoring an old scroll position.
+history.scrollRestoration = 'manual';
+window.addEventListener('pageshow', function() {
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+  }, 0);
 });
 
 const target=new Date('2026-09-27T23:59:59');
