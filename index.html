@@ -337,7 +337,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 1</h3><span class="member-badge">Team Leader</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m1_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m1_reg" placeholder="Register Number"></div>
+            <div class="reg-field"><label>Register Number</label><input required name="m1_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m1_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -346,7 +346,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 2</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m2_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m2_reg" placeholder="Register Number"></div>
+            <div class="reg-field"><label>Register Number</label><input required name="m2_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m2_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -355,7 +355,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 3</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m3_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m3_reg" placeholder="Register Number"></div>
+            <div class="reg-field"><label>Register Number</label><input required name="m3_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m3_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -364,7 +364,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 4</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m4_name" placeholder="Full Name"></div>
-            <div><label>Register Number</label><input required name="m4_reg" placeholder="Register Number"></div>
+            <div class="reg-field"><label>Register Number</label><input required name="m4_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m4_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -373,7 +373,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 5</h3><span class="member-badge">Optional</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input name="m5_name" placeholder="Full Name (optional)"></div>
-            <div><label>Register Number</label><input name="m5_reg" placeholder="Register Number"></div>
+            <div class="reg-field"><label>Register Number</label><input name="m5_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input name="m5_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -423,6 +423,21 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
    The hidden iframe is used only to keep the visitor on this page.
 */
 const registrationForm = document.getElementById('registrationForm');
+const teamYear = document.getElementById('teamYear');
+const registrationNumberFields = [...document.querySelectorAll('.reg-field')];
+
+function updateRegisterNumberFields() {
+  const isFirstYear = teamYear.value === '1st Year';
+  registrationNumberFields.forEach((field) => {
+    const input = field.querySelector('input');
+    field.style.display = isFirstYear ? 'none' : '';
+    input.required = !isFirstYear && input.name !== 'm5_reg';
+    if (isFirstYear) input.value = '';
+  });
+}
+
+teamYear.addEventListener('change', updateRegisterNumberFields);
+updateRegisterNumberFields();
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 const registrationFrame = document.getElementById('registrationFrame');
