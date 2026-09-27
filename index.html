@@ -387,7 +387,7 @@ html.power-lock,html.power-lock body{overflow:hidden!important}
 .power-intro.powering .power-logo{transform:scale(1.1);filter:drop-shadow(0 0 12px rgba(32,223,255,1)) drop-shadow(0 0 38px rgba(32,223,255,.72)) drop-shadow(0 0 78px rgba(255,122,24,.32))}
 .power-intro.powering .power-core:before{animation:coreIgnite .8s ease-out forwards}.power-intro.powering .power-ring{animation:powerExpand 1.05s cubic-bezier(.16,.74,.2,1) forwards}.power-intro.powering .power-ring.r2{animation-delay:.07s}.power-intro.powering .power-ring.r3{animation-delay:.14s}.power-intro.powering .power-ring.r4{animation:powerExpand 1.3s ease-out .04s forwards}.power-intro.powering .power-node{animation:powerNode .9s ease-out forwards}
 .power-intro.powering::before{animation:gridIgnite 1.35s ease-out forwards}.power-intro.powering::after{animation:shockwave 1.1s ease-out forwards}.power-intro.powering .power-trace{animation:traceIgnite 1s ease-out forwards}.power-intro.powering .power-hud{animation:hudFlash .9s ease-out forwards}.power-intro.powering .power-stage{animation:stageLift .85s ease-out forwards}.power-intro.powering .power-hint,.power-intro.powering .power-status{opacity:0;transition:opacity .25s}.power-intro.powered{opacity:0;visibility:hidden;pointer-events:none}
-@keyframes powerPulse{0%,100%{transform:scale(.96);opacity:.3}50%{transform:scale(1.04);opacity:.75}}@keyframes nodeBlink{0%,100%{opacity:.3}50%{opacity:1}}@keyframes hintPulse{0%,100%{opacity:.55}50%{opacity:1}}@keyframes coreBreath{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.2);opacity:.9}}@keyframes coreIgnite{0%{transform:scale(.8);opacity:.7}45%{transform:scale(2.5);opacity:1}100%{transform:scale(8);opacity:0}}@keyframes powerExpand{0%{transform:scale(1);opacity:.8}100%{transform:scale(9);opacity:0}}@keyframes powerNode{0%{opacity:1;transform:translateX(-50%) scale(1)}100%{opacity:0;transform:translateX(-50%) scale(10)}}@keyframes gridIgnite{0%{opacity:.5;filter:brightness(1)}40%{opacity:1;filter:brightness(3)}100%{opacity:0;filter:brightness(1)}}@keyframes shockwave{0%{transform:scale(.1);opacity:.8}100%{transform:scale(80);opacity:0}}@keyframes traceIgnite{0%{opacity:.15;filter:brightness(1)}45%{opacity:1;filter:brightness(3)}100%{opacity:0}}@keyframes hudFlash{0%,100%{opacity:1}50%{opacity:.2}}@keyframes stageLift{0%{transform:scale(1)}55%{transform:scale(1.025)}100%{transform:scale(1)}}@keyframes slowSpin{to{transform:rotate(360deg)}}@keyframes statusBlink{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes powerPulse{0%,100%{transform:scale(.96);opacity:.3}50%{transform:scale(1.04);opacity:.75}}@keyframes nodeBlink{0%,100%{opacity:.3}50%{opacity:1}}@keyframes hintPulse{0%,100%{opacity:.55}50%{opacity:1}}@keyframes coreBreath{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.2);opacity:.9}}@keyframes coreIgnite{0%{transform:scale(.8);opacity:.7}45%{transform:scale(2.5);opacity:1}100%{transform:scale(8);opacity:0}}@keyframes powerExpand{0%{transform:scale(1);opacity:.8}100%{transform:scale(9);opacity:0}}@keyframes powerNode{0%{opacity:1;transform:translateX(-50%) scale(1)}100%{opacity:0;transform:translateX(-50%) scale(10)}}@keyframes gridIgnite{0%{opacity:.45;filter:brightness(1)}38%{opacity:1;filter:brightness(2.4)}72%{opacity:.9;filter:brightness(1.5)}100%{opacity:0;filter:brightness(1)}}@keyframes shockwave{0%{transform:scale(.1);opacity:.72}45%{transform:scale(18);opacity:.22}100%{transform:scale(58);opacity:0}}@keyframes traceIgnite{0%{opacity:.15;filter:brightness(1)}45%{opacity:1;filter:brightness(3)}100%{opacity:0}}@keyframes hudFlash{0%,100%{opacity:1}50%{opacity:.2}}@keyframes stageLift{0%{transform:scale(1)}55%{transform:scale(1.025)}100%{transform:scale(1)}}@keyframes slowSpin{to{transform:rotate(360deg)}}@keyframes statusBlink{0%,100%{opacity:.3}50%{opacity:1}}
 @media(max-width:600px){.power-hud{inset:12px}.power-stage{height:82vh}.power-dept{max-width:300px;letter-spacing:.18em}.power-title{font-size:24px}.power-subtitle{font-size:10px}.power-hint{font-size:9px}.power-corner{font-size:7px}.power-corner.tl{left:10px;top:10px}.power-corner.tr{right:10px;top:10px}.power-corner.bl{left:10px;bottom:10px}.power-corner.br{right:10px;bottom:10px}}
 @media(prefers-reduced-motion:reduce){.power-ring,.power-node,.power-hint,.power-core:before{animation:none}.power-intro.powering .power-ring,.power-intro.powering .power-node,.power-intro.powering::before,.power-intro.powering::after,.power-intro.powering .power-trace,.power-intro.powering .power-hud,.power-intro.powering .power-stage,.power-intro.powering .power-core:before{animation:none}.power-intro.powering .power-logo{filter:drop-shadow(0 0 18px rgba(32,223,255,.8))}}
 </style>
@@ -418,22 +418,60 @@ html.power-lock,html.power-lock body{overflow:hidden!important}
 </div>
 <script>
 (function(){
+  /* ECE power-on: preserve the visitor's exact scroll position across reloads. */
   document.documentElement.classList.add('power-lock');
   const intro=document.getElementById('powerIntro');
   const core=document.getElementById('powerCore');
   if(!intro || !core) return;
+
+  const STORAGE_KEY='roborace2k26_scroll_y';
+  let savedY=0;
+  try{
+    const raw=sessionStorage.getItem(STORAGE_KEY);
+    savedY=raw===null?0:Math.max(0,parseInt(raw,10)||0);
+  }catch(e){}
+
+  /* Keep the browser from fighting our own restoration animation. */
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.scrollTo(0,savedY);
+
+  window.addEventListener('beforeunload',function(){
+    try{sessionStorage.setItem(STORAGE_KEY,String(window.scrollY||0));}catch(e){}
+  });
+
   let started=false;
+  function restorePosition(){
+    const root=document.documentElement;
+    const previous=root.style.scrollBehavior;
+    root.style.scrollBehavior='auto';
+    window.scrollTo(0,savedY);
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){root.style.scrollBehavior=previous;});
+    });
+  }
+
   function powerOn(){
-    if(started) return; started=true;
+    if(started) return;
+    started=true;
+    core.setAttribute('aria-label','Powering on Robo Race 2K26');
     intro.classList.add('powering');
+
+    /* Let the energy wave finish before revealing the page. */
     window.setTimeout(function(){
       intro.classList.add('powered');
       document.documentElement.classList.remove('power-lock');
-      window.setTimeout(function(){intro.remove();},800);
-    },1250);
+      restorePosition();
+      window.setTimeout(function(){
+        intro.remove();
+        restorePosition();
+      },900);
+    },1550);
   }
-  core.addEventListener('click',powerOn,{passive:true});
-  core.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();powerOn();}});
+
+  core.addEventListener('click',powerOn);
+  core.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();powerOn();}
+  });
 })();
 </script>
 
