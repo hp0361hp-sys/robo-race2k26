@@ -176,18 +176,111 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
   .form-shell{padding:18px}
   .member{padding:15px}
 }
+
+
+/* ================= ECE ENGINEERING VISUAL SYSTEM ================= */
+:root{--pcb:#07131c;--trace:rgba(32,223,255,.18);--trace2:rgba(255,122,24,.16)}
+body{background-color:#03080d;background-image:
+ linear-gradient(rgba(32,223,255,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(32,223,255,.035) 1px,transparent 1px),
+ radial-gradient(circle at 12% 8%,rgba(0,214,255,.13),transparent 25%),
+ radial-gradient(circle at 88% 22%,rgba(255,122,24,.10),transparent 24%);
+ background-size:32px 32px,32px 32px,auto,auto}
+.nav-wrap{background:rgba(2,8,13,.90);box-shadow:0 8px 35px rgba(0,0,0,.25)}
+.brand:after{content:'ECE // 2K26';font-family:Rajdhani;font-size:.66rem;letter-spacing:.16em;color:var(--cyan);padding-left:9px;border-left:1px solid rgba(32,223,255,.25)}
+.hero{background:
+ radial-gradient(circle at 72% 36%,rgba(32,223,255,.12),transparent 18%),
+ linear-gradient(90deg,rgba(2,8,13,.96) 0%,rgba(2,8,13,.76) 45%,rgba(2,8,13,.28) 100%),
+ linear-gradient(0deg,rgba(2,8,13,.92),transparent 45%),
+ url('roborace-hero.png') center/cover no-repeat}
+.hero:before{content:"";position:absolute;inset:0;opacity:.65;pointer-events:none;background-image:
+ linear-gradient(90deg,transparent 49.6%,rgba(32,223,255,.12) 49.8%,transparent 50.2%),
+ linear-gradient(0deg,transparent 49.6%,rgba(32,223,255,.08) 49.8%,transparent 50.2%);background-size:96px 96px}
+.hero-content{max-width:1180px}
+.hero-kicker:before{content:'◈ ';color:var(--cyan)}
+.hero h1{letter-spacing:-.055em}
+.hero h1 em{background:linear-gradient(90deg,var(--cyan),#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ece-chip{display:inline-flex;align-items:center;gap:10px;margin:12px 0 0;padding:9px 13px;border:1px solid rgba(32,223,255,.28);border-radius:10px;background:rgba(2,15,24,.65);font-family:Orbitron;font-size:.72rem;letter-spacing:.13em;color:#c9f7ff;box-shadow:inset 0 0 20px rgba(32,223,255,.04)}
+.ece-chip i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.countdown{position:relative}
+.countdown:before{content:'REGISTRATION DEADLINE // 29.09.2026 // 12:00 PM';position:absolute;left:0;top:-25px;color:#7fa0b5;font-size:.65rem;letter-spacing:.16em;font-weight:800}
+.timebox{position:relative;overflow:hidden}
+.timebox:after{content:"";position:absolute;right:-22px;bottom:-22px;width:58px;height:58px;border:1px solid rgba(32,223,255,.18);transform:rotate(45deg)}
+.section{isolation:isolate}
+.section:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle at 10% 20%,rgba(32,223,255,.04),transparent 22%),radial-gradient(circle at 90% 80%,rgba(255,122,24,.035),transparent 20%)}
+.ece-section{padding-top:75px}
+.ece-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}
+.ece-node{min-height:150px;padding:18px;border:1px solid rgba(32,223,255,.16);border-radius:15px;background:linear-gradient(145deg,rgba(9,25,38,.94),rgba(4,12,19,.94));position:relative;overflow:hidden;box-shadow:inset 0 0 30px rgba(32,223,255,.025)}
+.ece-node:before{content:"";position:absolute;left:0;top:0;width:38px;height:38px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);opacity:.7}
+.ece-node:after{content:"";position:absolute;right:10px;bottom:10px;width:18px;height:18px;border-right:1px solid var(--orange);border-bottom:1px solid var(--orange);opacity:.55}
+.ece-node .node-icon{font-size:1.7rem;margin-bottom:10px}
+.ece-node h3{margin:0 0 5px;font:700 .83rem Orbitron;letter-spacing:.03em;color:#eafaff}
+.ece-node p{margin:0;color:#8fa8b9;font-size:.83rem}
+.signal-strip{margin-top:22px;padding:13px 16px;border:1px solid rgba(32,223,255,.14);border-radius:12px;background:rgba(3,15,23,.7);display:flex;align-items:center;gap:14px;color:#a9c3d1;font-size:.84rem;overflow:hidden}
+.signal-line{height:28px;flex:1;min-width:120px;background:linear-gradient(90deg,transparent 0 4%,var(--cyan) 4% 4.6%,transparent 4.6% 12%,var(--cyan) 12% 12.5%,transparent 12.5% 22%,var(--cyan) 22% 22.5%,transparent 22.5% 30%,var(--orange) 30% 30.6%,transparent 30.6% 41%,var(--cyan) 41% 41.5%,transparent 41.5% 100%);clip-path:polygon(0 60%,6% 60%,8% 15%,10% 85%,12% 60%,28% 60%,30% 25%,32% 80%,34% 60%,55% 60%,57% 10%,59% 88%,61% 60%,80% 60%,82% 35%,84% 75%,86% 60%,100% 60%)}
+.card{background:linear-gradient(145deg,rgba(10,27,42,.94),rgba(4,12,19,.96))}
+.skill-card,.ece-node{transition:transform .2s,border-color .2s,box-shadow .2s}
+.skill-card:hover,.ece-node:hover{transform:translateY(-4px);border-color:rgba(32,223,255,.42);box-shadow:0 12px 35px rgba(0,0,0,.24),inset 0 0 30px rgba(32,223,255,.035)}
+.prize.first:before,.member.leader:before{background:linear-gradient(120deg,rgba(255,122,24,.10),transparent 50%,rgba(32,223,255,.04))}
+.form-shell{position:relative;overflow:hidden}
+.form-shell:before{content:'ECE // REGISTRATION TERMINAL';position:absolute;right:22px;top:16px;color:rgba(32,223,255,.34);font:700 .62rem Orbitron;letter-spacing:.14em}
+.form-note strong{color:#fff}
+.footer-brand span{line-height:1.35}
+@media(max-width:1000px){.ece-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.brand:after{display:none}.countdown:before{position:static;display:block;grid-column:1/-1;text-align:center;margin-bottom:-1px}.ece-grid{grid-template-columns:repeat(2,1fr)}.form-shell:before{display:none}}
+@media(max-width:430px){.ece-grid{grid-template-columns:1fr}.ece-node{min-height:auto}.signal-strip{align-items:flex-start;flex-direction:column}.signal-line{width:100%}}
+
+/* ================= ECE PRO MOTION SYSTEM ================= */
+:root{--glow:rgba(32,223,255,.55);--hot:rgba(255,122,24,.45)}
+body{overflow-x:hidden;cursor:default}
+body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:
+ radial-gradient(circle at 50% 50%,transparent 0 42%,rgba(32,223,255,.025) 58%,transparent 76%);}
+#eceCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.72}
+#scanlines{position:fixed;inset:0;z-index:9998;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 5px);mix-blend-mode:soft-light;opacity:.22}
+#cursorGlow{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(32,223,255,.08),rgba(32,223,255,.025) 30%,transparent 68%);opacity:0;transition:opacity .25s}
+.nav-wrap{transition:transform .35s ease,background .35s ease,border-color .35s ease}
+.nav-wrap.scrolled{background:rgba(2,8,13,.96);border-bottom-color:rgba(32,223,255,.18);box-shadow:0 12px 45px rgba(0,0,0,.42)}
+.nav-links a{position:relative;transition:color .2s,background .2s,transform .2s}
+.nav-links a:after{content:"";position:absolute;left:10px;right:10px;bottom:5px;height:1px;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--cyan),var(--orange));transition:transform .25s}
+.nav-links a:hover:after,.nav-links a.active:after{transform:scaleX(1)}
+.nav-links a.active{color:var(--cyan)}
+.hero{perspective:1200px}
+.hero-content{transform-style:preserve-3d}
+.hero:after{animation:heroSweep 7s ease-in-out infinite alternate}
+.hero:before{animation:gridDrift 16s linear infinite}
+@keyframes heroSweep{0%{transform:translateX(-18%);opacity:.15}100%{transform:translateX(18%);opacity:.55}}
+@keyframes gridDrift{from{background-position:0 0,0 0}to{background-position:96px 96px,-96px 96px}}
+.hero-logo{animation:floatLogo 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(32,223,255,.3)) drop-shadow(0 0 34px rgba(32,223,255,.12))}
+@keyframes floatLogo{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(.6deg)}}
+.ece-chip{box-shadow:0 0 0 rgba(32,223,255,0);animation:chipPulse 2.6s ease-in-out infinite}
+.ece-chip i{animation:ledPulse 1.2s ease-in-out infinite alternate}
+@keyframes chipPulse{50%{box-shadow:0 0 28px rgba(32,223,255,.09),inset 0 0 20px rgba(32,223,255,.08)}}
+@keyframes ledPulse{from{opacity:.45;box-shadow:0 0 5px var(--cyan)}to{opacity:1;box-shadow:0 0 18px var(--cyan)}}
+.countdown .timebox{animation:timeFloat 4s ease-in-out infinite;animation-delay:calc(var(--i,0)*.12s)}
+.countdown .timebox:nth-child(1){--i:1}.countdown .timebox:nth-child(2){--i:2}.countdown .timebox:nth-child(3){--i:3}.countdown .timebox:nth-child(4){--i:4}
+@keyframes timeFloat{50%{transform:translateY(-4px)}}
+.timebox b{text-shadow:0 0 16px rgba(32,223,255,.22)}
+.signal-line{position:relative;overflow:hidden;background:linear-gradient(90deg,transparent 0 4%,var(--cyan) 4% 4.6%,transparent 4.6% 12%,var(--cyan) 12% 12.5%,transparent 12.5% 22%,var(--cyan) 22% 22.5%,transparent 22.5% 30%,var(--orange) 30% 30.6%,transparent 30.6% 41%,var(--cyan) 41% 41.5%,transparent 41.5% 100%);animation:signalMove 2.2s linear infinite}
+@keyframes signalMove{from{background-position:0 0}to{background-position:120px 0}}
+.card,.ece-node,.skill-card,.form-shell,.about-panel,.contact-card,.media-card,.prize,.member{will-change:transform;transform-style:preserve-3d}
+.card:after,.ece-node:after,.skill-card:after{content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.06) 42%,transparent 58%);transform:translateX(-120%);transition:transform .65s ease}
+.card:hover:after,.ece-node:hover:after,.skill-card:hover:after{transform:translateX(120%)}
+.ece-node .node-icon{filter:drop-shadow(0 0 8px rgba(32,223,255,.2));transition:transform .3s}
+.ece-node:hover .node-icon{transform:translateZ(14px) scale(1.12)}
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary:before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-55%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:buttonShine 3.4s ease-in-out infinite}
+@keyframes buttonShine{0%,58%{left:-55%}75%,100%{left:125%}}
+.section-title{position:relative}
+.section-title:after{content:"";display:block;width:52px;height:2px;margin-top:12px;background:linear-gradient(90deg,var(--cyan),var(--orange),transparent);box-shadow:0 0 12px rgba(32,223,255,.25)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.25,1)}
+.reveal.visible{opacity:1;transform:none}
+.stagger{transition-delay:var(--delay,0ms)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(max-width:800px){#cursorGlow{display:none}.hero:before{animation-duration:24s}.scanlines{display:none}}
+
 </style>
 </head>
 <body>
-<script>
-(function(){
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (window.location.hash) {
-    history.replaceState(null, '', window.location.pathname + window.location.search);
-  }
-})();
-</script>
-
 
 <header class="nav-wrap">
   <div class="container nav">
@@ -201,6 +294,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
       <a href="#registration">Registration Form</a>
       <a href="#glimpses">Previous Event Glimpses</a>
       <a href="#videos">Robo Car Building Video</a>
+      <a href="#ece-focus">ECE Focus</a>
       <a href="#rules">Rules &amp; Regulations</a>
       <a href="#prizes">Prizes</a>
       <a href="#about">About</a>
@@ -213,6 +307,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
   <div class="hero-content">
     <img class="hero-logo" src="college-logo.png" alt="SDM Polytechnic Ujire">
     <div class="hero-kicker">SDM Polytechnic Ujire · 574240</div>
+    <div class="ece-chip"><i></i> ELECTRONICS &amp; COMMUNICATION ENGINEERING · LIVE BUILD / CONTROL / RACE</div>
     <h1>ROBO <em>RACE</em> 2K26</h1>
     <p>Build the machine. Master the track. Race with precision. A high-energy RoboRace experience celebrating Arduino, embedded systems, wireless control, mechanical design and teamwork.</p>
     <div class="hero-actions">
@@ -226,7 +321,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
       <div class="timebox"><b id="minutes">--</b><small>Minutes</small></div>
       <div class="timebox"><b id="seconds">--</b><small>Seconds</small></div>
     </div>
-    <p class="muted" style="margin-top:10px">Registration closes: <strong>27 September 2026</strong></p>
+    <p class="muted" style="margin-top:10px">Registration closes: <strong>29 September 2026 · 12:00 PM</strong></p>
   </div>
 </section>
 
@@ -252,6 +347,23 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
         <div class="skill-card"><div class="icon">🏁</div><h3>Race Strategy</h3><span class="muted">Speed matters, but control matters more.</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section ece-section" id="ece-focus">
+  <div class="container">
+    <div class="badge">02 · ECE Engineering Focus</div>
+    <h2 class="section-title">Where <span>Electronics</span> Meets the Track</h2>
+    <p class="section-sub">Designed around the practical skills of Electronics &amp; Communication Engineering — from signal flow and embedded control to wireless command and real-world hardware.</p>
+    <div class="ece-grid">
+      <article class="ece-node"><div class="node-icon">🔲</div><h3>MICROCONTROLLER</h3><p>Control logic, timing and embedded programming.</p></article>
+      <article class="ece-node"><div class="node-icon">📡</div><h3>RF / WIRELESS</h3><p>Reliable remote communication and control.</p></article>
+      <article class="ece-node"><div class="node-icon">〰️</div><h3>SIGNAL FLOW</h3><p>Think input → processing → output.</p></article>
+      <article class="ece-node"><div class="node-icon">⚡</div><h3>POWER ELECTRONICS</h3><p>Motor drive, voltage and power management.</p></article>
+      <article class="ece-node"><div class="node-icon">⚙️</div><h3>EMBEDDED CONTROL</h3><p>Hardware and software working together.</p></article>
+      <article class="ece-node"><div class="node-icon">🧠</div><h3>SYSTEM THINKING</h3><p>Debug, tune and adapt under pressure.</p></article>
+    </div>
+    <div class="signal-strip"><strong style="color:var(--cyan);white-space:nowrap">LIVE SIGNAL</strong><div class="signal-line"></div><span>BUILD → CONNECT → CODE → CONTROL → CONQUER</span></div>
   </div>
 </section>
 
@@ -337,7 +449,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 1</h3><span class="member-badge">Team Leader</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m1_name" placeholder="Full Name"></div>
-            <div class="reg-field"><label>Register Number</label><input required name="m1_reg" placeholder="Register Number"></div>
+            <div><label>Register Number</label><input required name="m1_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m1_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -346,7 +458,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 2</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m2_name" placeholder="Full Name"></div>
-            <div class="reg-field"><label>Register Number</label><input required name="m2_reg" placeholder="Register Number"></div>
+            <div><label>Register Number</label><input required name="m2_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m2_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -355,7 +467,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 3</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m3_name" placeholder="Full Name"></div>
-            <div class="reg-field"><label>Register Number</label><input required name="m3_reg" placeholder="Register Number"></div>
+            <div><label>Register Number</label><input required name="m3_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m3_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -364,7 +476,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 4</h3><span class="member-badge">Member</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input required name="m4_name" placeholder="Full Name"></div>
-            <div class="reg-field"><label>Register Number</label><input required name="m4_reg" placeholder="Register Number"></div>
+            <div><label>Register Number</label><input required name="m4_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input required name="m4_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
@@ -373,12 +485,12 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 0;color:#9db0c0}
           <div class="member-head"><h3>Member 5</h3><span class="member-badge">Optional</span></div>
           <div class="field-grid">
             <div class="field full"><label>Full Name</label><input name="m5_name" placeholder="Full Name (optional)"></div>
-            <div class="reg-field"><label>Register Number</label><input name="m5_reg" placeholder="Register Number"></div>
+            <div><label>Register Number</label><input name="m5_reg" placeholder="Register Number"></div>
             <div><label>Mobile Number</label><input name="m5_mobile" inputmode="tel" placeholder="Mobile Number"></div>
           </div>
         </div>
       </div>
-      <div class="form-note">Registration deadline: <strong>27 September 2026</strong>. Your registration is submitted to the Robo Race 2K26 Google Sheets registration system.</div>
+      <div class="form-note">Registration deadline: <strong>29 September 2026 · 12:00 PM</strong>. Your registration is submitted to the Robo Race 2K26 Google Sheets registration system.</div>
       <div class="form-submit">
         <button class="btn btn-primary" id="submitBtn" type="submit">Submit Registration →</button>
         <a class="btn btn-outline" href="#contact">Need Help? Contact Us</a>
@@ -419,29 +531,13 @@ menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
 /* ================= GOOGLE SHEETS REGISTRATION =================
-   Native HTML form POST to Google Apps Script.
-   The hidden iframe is used only to keep the visitor on this page.
+   Replace the action URL in the <form> with your deployed
+   Google Apps Script Web App URL.
 */
 const registrationForm = document.getElementById('registrationForm');
-const teamYear = document.getElementById('teamYear');
-const registrationNumberFields = [...document.querySelectorAll('.reg-field')];
-
-function updateRegisterNumberFields() {
-  const isFirstYear = teamYear.value === '1st Year';
-  registrationNumberFields.forEach((field) => {
-    const input = field.querySelector('input');
-    field.style.display = isFirstYear ? 'none' : '';
-    input.required = !isFirstYear && input.name !== 'm5_reg';
-    if (isFirstYear) input.value = '';
-  });
-}
-
-teamYear.addEventListener('change', updateRegisterNumberFields);
-updateRegisterNumberFields();
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 const registrationFrame = document.getElementById('registrationFrame');
-let submissionStarted = false;
 
 registrationForm.addEventListener('submit', function(e) {
   const endpoint = registrationForm.getAttribute('action') || '';
@@ -453,33 +549,46 @@ registrationForm.addEventListener('submit', function(e) {
     return;
   }
 
-  submissionStarted = true;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Submitting…';
   formStatus.textContent = 'Submitting your registration…';
   formStatus.style.color = '#20dfff';
 });
 
-registrationFrame.addEventListener('load', function() {
-  if (!submissionStarted) return;
+window.addEventListener('message', function(event) {
+  const data = event.data || {};
 
-  submissionStarted = false;
-  submitBtn.disabled = true;
-  submitBtn.textContent = '✓ Registration Submitted';
-  formStatus.textContent = '✓ REGISTRATION SUBMITTED SUCCESSFULLY! Please do not submit again.';
-  formStatus.style.color = '#25d366';
-  registrationForm.reset();
+  if (data.type === 'ROBORACE_SUCCESS') {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Registration →';
+    formStatus.textContent = 'Registration successful ✓ Your team details have been saved.';
+    formStatus.style.color = '#25d366';
+    registrationForm.reset();
+  }
+
+  if (data.type === 'ROBORACE_ERROR') {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Registration →';
+    formStatus.textContent = 'Registration failed: ' + (data.message || 'Please try again.');
+    formStatus.style.color = '#ff6b6b';
+  }
 });
 
-// Always open the website at the top instead of restoring an old scroll position.
-history.scrollRestoration = 'manual';
-window.addEventListener('pageshow', function() {
-  setTimeout(function() {
-    window.scrollTo(0, 0);
-  }, 0);
-});
+// First-year teams do not use register numbers.
+const teamYear = document.getElementById('teamYear');
+const regFields = Array.from(document.querySelectorAll('input[name$="_reg"]')).map(input => input.closest('div'));
+function updateRegisterFields(){
+  const firstYear = teamYear && teamYear.value === '1st Year';
+  regFields.forEach(field => {
+    if(!field) return;
+    const input = field.querySelector('input');
+    field.style.display = firstYear ? 'none' : '';
+    if(input){ input.required = !firstYear && input.name !== 'm5_reg'; if(firstYear) input.value=''; }
+  });
+}
+if(teamYear){ teamYear.addEventListener('change', updateRegisterFields); updateRegisterFields(); }
 
-const target=new Date('2026-09-27T23:59:59');
+const target=new Date('2026-09-29T12:00:00+05:30');
 function updateCountdown(){
   let diff=target-new Date();
   if(diff<=0){
@@ -496,6 +605,48 @@ function updateCountdown(){
   document.getElementById('seconds').textContent=String(s).padStart(2,'0');
 }
 updateCountdown(); setInterval(updateCountdown,1000);
+</script>
+
+<script>
+/* ECE motion layer: circuit particles, scroll reveal, subtle tilt and active navigation */
+(function(){
+  const canvas=document.createElement('canvas'); canvas.id='eceCanvas'; document.body.prepend(canvas);
+  const scan=document.createElement('div'); scan.id='scanlines'; document.body.appendChild(scan);
+  const glow=document.createElement('div'); glow.id='cursorGlow'; document.body.appendChild(glow);
+  const ctx=canvas.getContext('2d'); let w=0,h=0,dpr=1,points=[],raf=0;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);make();}
+  function make(){points=[];const count=Math.min(42,Math.max(18,Math.floor(w/34)));for(let i=0;i<count;i++)points.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,p:Math.random()*6.28});}
+  function draw(t){ctx.clearRect(0,0,w,h); if(reduce)return; for(let i=0;i<points.length;i++){const a=points[i];a.x+=a.vx;a.y+=a.vy;a.p+=.012;if(a.x<-20)a.x=w+20;if(a.x>w+20)a.x=-20;if(a.y<-20)a.y=h+20;if(a.y>h+20)a.y=-20;
+      for(let j=i+1;j<points.length;j++){const b=points[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<135){ctx.strokeStyle='rgba(32,223,255,'+(0.085*(1-dist/135))+')';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+      const pulse=(Math.sin(a.p+t*.0015)+1)/2;ctx.fillStyle='rgba(32,223,255,'+(0.12+.18*pulse)+')';ctx.beginPath();ctx.arc(a.x,a.y,1.1+1.2*pulse,0,Math.PI*2);ctx.fill();
+    } raf=requestAnimationFrame(draw);
+  }
+  addEventListener('resize',resize,{passive:true});resize();if(!reduce)raf=requestAnimationFrame(draw);
+
+  const nav=document.querySelector('.nav-wrap');
+  function navState(){nav&&nav.classList.toggle('scrolled',scrollY>30)} addEventListener('scroll',navState,{passive:true});navState();
+
+  const glowEl=document.getElementById('cursorGlow');
+  addEventListener('pointermove',e=>{if(innerWidth>800){glowEl.style.opacity='.9';glowEl.style.left=e.clientX+'px';glowEl.style.top=e.clientY+'px';}}, {passive:true});
+  addEventListener('pointerleave',()=>glowEl.style.opacity='0');
+
+  const targets=[...document.querySelectorAll('.section,.hero-content,.card,.ece-node,.skill-card,.about-panel,.member,.media-card,.prize,.contact-card,.form-shell')];
+  targets.forEach((el,i)=>{el.classList.add('reveal');if(el.classList.contains('card')||el.classList.contains('ece-node')||el.classList.contains('skill-card'))el.style.setProperty('--delay',(i%6)*55+'ms');});
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -35px'});targets.forEach(el=>io.observe(el));}else targets.forEach(el=>el.classList.add('visible'));
+
+  if(innerWidth>900&&!reduce){
+    document.querySelectorAll('.card,.ece-node,.skill-card,.about-panel,.member,.media-card,.prize,.contact-card').forEach(el=>{
+      el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(900px) rotateX('+(-y*4)+'deg) rotateY('+(x*5)+'deg) translateY(-3px)';});
+      el.addEventListener('pointerleave',()=>{el.style.transform='';});
+    });
+  }
+
+  const sections=[...document.querySelectorAll('main section[id]')], links=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const spy=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active');}}),{rootMargin:'-35% 0px -55% 0px',threshold:0});
+  sections.forEach(s=>spy.observe(s));
+})();
 </script>
 </body>
 </html>
