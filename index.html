@@ -334,9 +334,109 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 .ece-node:nth-child(2n){animation-delay:-1.2s}.ece-node:nth-child(3n){animation-delay:-2.4s}
 @keyframes nodeIdle{0%,100%{box-shadow:0 0 0 rgba(32,223,255,0)}50%{box-shadow:0 0 24px rgba(32,223,255,.055)}}
 
+
+/* Final polish: clickable email action */
+a.email{
+  color:#dff8ff;
+  text-decoration:none;
+  transition:color .25s,transform .25s,filter .25s;
+  cursor:pointer;
+}
+a.email:hover{
+  color:var(--cyan);
+  transform:translateY(-1px);
+  filter:drop-shadow(0 0 8px rgba(32,223,255,.25));
+}
+a[href^="mailto:"]{cursor:pointer}
+
+
+/* ECE POWER-ON INTRO — FINAL */
+html.power-lock,html.power-lock body{overflow:hidden!important}
+.power-intro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#010509;overflow:hidden;color:#eaf8ff;cursor:default;transition:opacity .85s ease,visibility .85s ease}
+.power-intro::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 50% 46%,rgba(24,211,255,.07),transparent 16%),
+ linear-gradient(rgba(32,223,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(32,223,255,.035) 1px,transparent 1px);
+ background-size:auto,52px 52px,52px 52px;opacity:.5;mask-image:radial-gradient(circle at center,#000 0%,#000 48%,transparent 88%)}
+.power-intro::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.68) 100%),linear-gradient(180deg,rgba(0,0,0,.25),transparent 35%,rgba(0,0,0,.38));pointer-events:none}
+.power-hud{position:absolute;inset:22px;z-index:3;pointer-events:none;border:1px solid rgba(32,223,255,.08)}
+.power-hud:before,.power-hud:after{content:"";position:absolute;width:70px;height:70px;border-color:rgba(32,223,255,.28);border-style:solid}
+.power-hud:before{left:-1px;top:-1px;border-width:1px 0 0 1px}.power-hud:after{right:-1px;bottom:-1px;border-width:0 1px 1px 0}
+.power-corner{position:absolute;font:600 9px/1 Rajdhani,sans-serif;letter-spacing:.22em;color:#577487;text-transform:uppercase}
+.power-corner.tl{left:18px;top:15px}.power-corner.tr{right:18px;top:15px;text-align:right}.power-corner.bl{left:18px;bottom:15px}.power-corner.br{right:18px;bottom:15px;text-align:right}
+.power-corner b{color:#20dfff;font-weight:700}.power-corner i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#20dfff;box-shadow:0 0 8px #20dfff;margin-right:7px;animation:statusBlink 1.5s ease-in-out infinite}
+.power-stage{position:relative;z-index:5;width:min(520px,92vw);height:min(650px,88vh);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.power-topline{font:700 clamp(10px,1.7vw,13px)/1 Orbitron,sans-serif;letter-spacing:.3em;color:#a7c2d2;text-transform:uppercase;margin-bottom:12px;opacity:.9}
+.power-dept{font:600 clamp(9px,1.5vw,11px)/1.35 Rajdhani,sans-serif;letter-spacing:.24em;color:#20dfff;text-transform:uppercase;max-width:430px;margin-bottom:30px}
+.power-core{position:relative;width:min(205px,48vw);height:min(205px,48vw);display:grid;place-items:center;cursor:pointer;isolation:isolate}
+.power-core:before{content:"";position:absolute;inset:25%;border-radius:50%;background:rgba(32,223,255,.08);filter:blur(18px);opacity:.65;animation:coreBreath 2.2s ease-in-out infinite}
+.power-logo{position:relative;width:min(122px,29vw);height:auto;display:block;filter:drop-shadow(0 0 7px rgba(32,223,255,.25));transition:filter .3s ease,transform .3s ease}
+.power-core:hover .power-logo{transform:scale(1.045);filter:drop-shadow(0 0 10px rgba(32,223,255,.6)) drop-shadow(0 0 24px rgba(32,223,255,.25))}
+.power-ring{position:absolute;border:1px solid rgba(32,223,255,.2);border-radius:50%;inset:8%;animation:powerPulse 2.4s ease-in-out infinite}
+.power-ring.r2{inset:-4%;border-color:rgba(32,223,255,.11);animation-delay:.3s}.power-ring.r3{inset:-18%;border-color:rgba(255,122,24,.09);animation-delay:.65s}.power-ring.r4{inset:-31%;border:1px dashed rgba(32,223,255,.06);animation:slowSpin 18s linear infinite}
+.power-node{position:absolute;width:6px;height:6px;border-radius:50%;background:#20dfff;box-shadow:0 0 12px #20dfff;top:1%;left:50%;transform:translateX(-50%);opacity:.65;animation:nodeBlink 1.8s ease-in-out infinite}
+.power-crosshair{position:absolute;inset:0;pointer-events:none}.power-crosshair:before,.power-crosshair:after{content:"";position:absolute;background:rgba(32,223,255,.22)}
+.power-crosshair:before{width:100%;height:1px;left:0;top:50%}.power-crosshair:after{height:100%;width:1px;left:50%;top:0}
+.power-title{font:800 clamp(25px,6vw,42px)/1 Orbitron,sans-serif;letter-spacing:.09em;margin-top:26px;color:#f3f9ff;text-transform:uppercase;text-shadow:0 0 20px rgba(32,223,255,.08)}
+.power-title span{color:#20dfff}.power-subtitle{font:600 12px/1 Rajdhani,sans-serif;letter-spacing:.32em;color:#8098a9;text-transform:uppercase;margin-top:10px}
+.power-divider{width:min(250px,60vw);height:1px;background:linear-gradient(90deg,transparent,#20dfff,#ff7a18,transparent);margin:24px 0 18px;opacity:.55}
+.power-hint{font:700 11px/1 Orbitron,sans-serif;letter-spacing:.2em;color:#b9cbd7;text-transform:uppercase;display:flex;align-items:center;gap:9px;animation:hintPulse 1.8s ease-in-out infinite}
+.power-hint .dot{width:6px;height:6px;border-radius:50%;background:#20dfff;box-shadow:0 0 10px #20dfff}
+.power-status{margin-top:14px;font:600 9px/1 Rajdhani,sans-serif;letter-spacing:.18em;color:#536b7a;text-transform:uppercase}
+.power-status span{color:#20dfff}
+.power-trace{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(32,223,255,.6),transparent);opacity:.25;z-index:2}.power-trace.t1{width:34vw;left:0;top:32%}.power-trace.t2{width:28vw;right:0;top:61%}.power-trace.t3{width:22vw;left:7%;top:72%;background:linear-gradient(90deg,transparent,rgba(255,122,24,.45),transparent)}
+.power-intro.powering .power-logo{transform:scale(1.1);filter:drop-shadow(0 0 12px rgba(32,223,255,1)) drop-shadow(0 0 38px rgba(32,223,255,.72)) drop-shadow(0 0 78px rgba(255,122,24,.32))}
+.power-intro.powering .power-core:before{animation:coreIgnite .8s ease-out forwards}.power-intro.powering .power-ring{animation:powerExpand 1.05s cubic-bezier(.16,.74,.2,1) forwards}.power-intro.powering .power-ring.r2{animation-delay:.07s}.power-intro.powering .power-ring.r3{animation-delay:.14s}.power-intro.powering .power-ring.r4{animation:powerExpand 1.3s ease-out .04s forwards}.power-intro.powering .power-node{animation:powerNode .9s ease-out forwards}
+.power-intro.powering::before{animation:gridIgnite 1.35s ease-out forwards}.power-intro.powering::after{animation:shockwave 1.1s ease-out forwards}.power-intro.powering .power-trace{animation:traceIgnite 1s ease-out forwards}.power-intro.powering .power-hud{animation:hudFlash .9s ease-out forwards}.power-intro.powering .power-stage{animation:stageLift .85s ease-out forwards}.power-intro.powering .power-hint,.power-intro.powering .power-status{opacity:0;transition:opacity .25s}.power-intro.powered{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes powerPulse{0%,100%{transform:scale(.96);opacity:.3}50%{transform:scale(1.04);opacity:.75}}@keyframes nodeBlink{0%,100%{opacity:.3}50%{opacity:1}}@keyframes hintPulse{0%,100%{opacity:.55}50%{opacity:1}}@keyframes coreBreath{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.2);opacity:.9}}@keyframes coreIgnite{0%{transform:scale(.8);opacity:.7}45%{transform:scale(2.5);opacity:1}100%{transform:scale(8);opacity:0}}@keyframes powerExpand{0%{transform:scale(1);opacity:.8}100%{transform:scale(9);opacity:0}}@keyframes powerNode{0%{opacity:1;transform:translateX(-50%) scale(1)}100%{opacity:0;transform:translateX(-50%) scale(10)}}@keyframes gridIgnite{0%{opacity:.5;filter:brightness(1)}40%{opacity:1;filter:brightness(3)}100%{opacity:0;filter:brightness(1)}}@keyframes shockwave{0%{transform:scale(.1);opacity:.8}100%{transform:scale(80);opacity:0}}@keyframes traceIgnite{0%{opacity:.15;filter:brightness(1)}45%{opacity:1;filter:brightness(3)}100%{opacity:0}}@keyframes hudFlash{0%,100%{opacity:1}50%{opacity:.2}}@keyframes stageLift{0%{transform:scale(1)}55%{transform:scale(1.025)}100%{transform:scale(1)}}@keyframes slowSpin{to{transform:rotate(360deg)}}@keyframes statusBlink{0%,100%{opacity:.3}50%{opacity:1}}
+@media(max-width:600px){.power-hud{inset:12px}.power-stage{height:82vh}.power-dept{max-width:300px;letter-spacing:.18em}.power-title{font-size:24px}.power-subtitle{font-size:10px}.power-hint{font-size:9px}.power-corner{font-size:7px}.power-corner.tl{left:10px;top:10px}.power-corner.tr{right:10px;top:10px}.power-corner.bl{left:10px;bottom:10px}.power-corner.br{right:10px;bottom:10px}}
+@media(prefers-reduced-motion:reduce){.power-ring,.power-node,.power-hint,.power-core:before{animation:none}.power-intro.powering .power-ring,.power-intro.powering .power-node,.power-intro.powering::before,.power-intro.powering::after,.power-intro.powering .power-trace,.power-intro.powering .power-hud,.power-intro.powering .power-stage,.power-intro.powering .power-core:before{animation:none}.power-intro.powering .power-logo{filter:drop-shadow(0 0 18px rgba(32,223,255,.8))}}
 </style>
 </head>
 <body>
+<div class="power-intro" id="powerIntro" aria-label="Robo Race 2K26 power-on screen">
+  <div class="power-hud" aria-hidden="true">
+    <span class="power-corner tl"><i></i><b>SYS</b> // STANDBY</span>
+    <span class="power-corner tr">ECE // <b>2K26</b><br>UJIRE / INDIA</span>
+    <span class="power-corner bl">POWER BUS // <b>OFFLINE</b></span>
+    <span class="power-corner br">CORE // <b>READY</b></span>
+  </div>
+  <div class="power-trace t1"></div><div class="power-trace t2"></div><div class="power-trace t3"></div>
+  <div class="power-stage">
+    <div class="power-topline">SDM POLYTECHNIC UJIRE</div>
+    <div class="power-dept">DEPARTMENT OF ELECTRONICS &amp; COMMUNICATION ENGINEERING</div>
+    <div class="power-core" id="powerCore" role="button" tabindex="0" aria-label="Tap the SDM logo to power on Robo Race 2K26">
+      <span class="power-ring"></span><span class="power-ring r2"></span><span class="power-ring r3"></span><span class="power-ring r4"></span>
+      <span class="power-node"></span><span class="power-crosshair"></span>
+      <img class="power-logo" src="college-logo.png" alt="SDM Polytechnic Ujire logo">
+    </div>
+    <div class="power-title">ROBO RACE <span>2K26</span></div>
+    <div class="power-subtitle">BUILD · CONNECT · CODE · CONTROL · CONQUER</div>
+    <div class="power-divider"></div>
+    <div class="power-hint"><span class="dot"></span> TAP LOGO TO POWER ON</div>
+    <div class="power-status">ELECTRONIC SYSTEM <span>READY</span> · RACE GRID <span>STANDBY</span></div>
+  </div>
+</div>
+<script>
+(function(){
+  document.documentElement.classList.add('power-lock');
+  const intro=document.getElementById('powerIntro');
+  const core=document.getElementById('powerCore');
+  if(!intro || !core) return;
+  let started=false;
+  function powerOn(){
+    if(started) return; started=true;
+    intro.classList.add('powering');
+    window.setTimeout(function(){
+      intro.classList.add('powered');
+      document.documentElement.classList.remove('power-lock');
+      window.setTimeout(function(){intro.remove();},800);
+    },1250);
+  }
+  core.addEventListener('click',powerOn,{passive:true});
+  core.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();powerOn();}});
+})();
+</script>
+
 <div id="scrollProgress" aria-hidden="true"></div>
 <button id="backTop" aria-label="Back to top">↑</button>
 
@@ -390,12 +490,12 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
   <div class="container">
     <div class="badge">01 · About Robo Race</div>
     <h2 class="section-title">Build. <span>Think.</span> Race.</h2>
-    <p class="section-sub">Robo Race 2K26 is designed to challenge students to combine electronics, code, mechanics and real-time decision making into one race-ready robotic vehicle.</p>
+    <p class="section-sub">Robo Race 2K26 is designed to challenge students to combine electronics, code, mechanics and real-time decision-making into one race-ready robotic vehicle.</p>
     <div class="about-grid">
       <div class="about-panel">
         <h3 style="font-family:Orbitron">The Objective</h3>
         <p class="muted">Create a reliable robot, tune its control system, understand its mechanical behaviour and complete a demanding obstacle-filled track with your team.</p>
-        <p class="muted">The event encourages practical engineering, innovation and problem solving while giving participants a competitive platform to demonstrate their skills.</p>
+        <p class="muted">The event encourages practical engineering, innovation and problem-solving while giving participants a competitive platform to demonstrate their skills.</p>
       </div>
       <div class="skill-grid">
         <div class="skill-card"><div class="icon">💡</div><h3>Innovation</h3><span class="muted">Turn an idea into a race-ready machine.</span></div>
@@ -430,9 +530,9 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 
 <section class="section" id="prizes">
   <div class="container">
-    <div class="badge">02 · Prizes</div>
+    <div class="badge">03 · Prizes</div>
     <h2 class="section-title">Race for <span>the Podium</span></h2>
-    <p class="section-sub">Exciting recognition for teams that combine speed, engineering and control.</p>
+    <p class="section-sub">Recognition for teams that combine speed, engineering, and control.</p>
     <div class="grid cards-3">
       <article class="card prize first">
         <div><div class="place">🥇 First Prize</div><p class="muted">For the team finishing at the top of the competition.</p></div>
@@ -452,22 +552,22 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 
 <section class="section" id="rules">
   <div class="container">
-    <div class="badge">03 · Rules &amp; Regulations</div>
+    <div class="badge">04 · Rules &amp; Regulations</div>
     <h2 class="section-title">Know the <span>Track Rules</span></h2>
     <p class="section-sub">Read these rules carefully before building and registering your RoboRace vehicle.</p>
     <div class="grid cards-2">
       <article class="card rules"><span class="num">01</span><h3>Team Rules</h3><ul><li>4–5 members per team</li><li>One robot per team</li><li>Valid college ID mandatory</li></ul></article>
       <article class="card rules"><span class="num">02</span><h3>Robot Rules</h3><ul><li>Maximum size: 10 × 10 inches</li><li>Maximum height: 5 inches</li><li>Maximum voltage: 24V DC</li><li>Wired and wireless robots allowed</li><li>Readymade robots not allowed</li></ul></article>
       <article class="card rules"><span class="num">03</span><h3>Track Rules</h3><ul><li>Slopes</li><li>Sand section</li><li>Rollers</li><li>Speed breakers</li><li>Sharp turns</li><li>Slippery surfaces</li></ul></article>
-      <article class="card rules"><span class="num">04</span><h3>Penalties</h3><ul><li>Maximum 2 hand touches</li><li>5-second penalty after touch limit</li><li>No practice runs on final track</li></ul></article>
-      <article class="card rules" style="grid-column:1/-1"><span class="num">05</span><h3>Event Rules</h3><ul><li>Coordinator decision is final.</li></ul></article>
+      <article class="card rules"><span class="num">04</span><h3>Penalties</h3><ul><li>Maximum of 2 hand touches</li><li>A 5-second penalty applies after the touch limit is exceeded</li><li>No practice runs on final track</li></ul></article>
+      <article class="card rules" style="grid-column:1/-1"><span class="num">05</span><h3>Event Rules</h3><ul><li>The coordinator's decision is final.</li></ul></article>
     </div>
   </div>
 </section>
 
 <section class="section" id="videos">
   <div class="container">
-    <div class="badge">04 · Robo Car Building Video</div>
+    <div class="badge">05 · Robo Car Building Video</div>
     <h2 class="section-title">Build Your <span>Robo Car</span></h2>
     <p class="section-sub">Reference videos shared for RoboRace preparation and inspiration.</p>
     <div class="grid cards-3">
@@ -480,7 +580,7 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 
 <section class="section" id="glimpses">
   <div class="container">
-    <div class="badge">05 · Previous Event Glimpses</div>
+    <div class="badge">06 · Previous Event Glimpses</div>
     <h2 class="section-title">See the <span>Action</span></h2>
     <p class="section-sub">Highlights and glimpses from previous RoboRace activities.</p>
     <div class="grid cards-2">
@@ -492,7 +592,7 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 
 <section class="section" id="registration">
   <div class="container">
-    <div class="badge">06 · Registration Form</div>
+    <div class="badge">07 · Registration Form</div>
     <h2 class="section-title">Register Your <span>Team</span></h2>
     <p class="section-sub">Fill in the details for each team member. Member 1 is the team leader. Member 5 is optional.</p>
     <form class="form-shell" id="registrationForm" method="POST"
@@ -551,7 +651,7 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
           </div>
         </div>
       </div>
-      <div class="form-note">Registration deadline: <strong>29 September 2026 · 12:00 PM</strong>. Your registration is submitted to the Robo Race 2K26 Google Sheets registration system.</div>
+      <div class="form-note">Registration deadline: <strong>29 September 2026 · 12:00 PM</strong>. Your registration will be submitted to the Robo Race 2K26 Google Sheets registration system.</div>
       <div class="form-submit">
         <button class="btn btn-primary" id="submitBtn" type="submit">Submit Registration →</button>
         <a class="btn btn-outline" href="#contact">Need Help? Contact Us</a>
@@ -564,16 +664,16 @@ footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;
 
 <section class="section" id="contact">
   <div class="container">
-    <div class="badge">07 · Contact</div>
+    <div class="badge">08 · Contact</div>
     <h2 class="section-title">Get in <span>Touch</span></h2>
-    <p class="section-sub">For registration assistance and event details, contact the team on WhatsApp or email.</p>
+    <p class="section-sub">For registration assistance and event details, contact the team via WhatsApp or email.</p>
     <div class="contact-grid">
       <article class="card contact-card"><h3>Mr. Shreyas</h3><div class="phone">8618080584</div><a class="wa" href="https://wa.me/918618080584" target="_blank" rel="noopener">● WhatsApp</a></article>
       <article class="card contact-card"><h3>Mr. Shree Hari Prasad</h3><div class="phone">7338630361</div><a class="wa" href="https://wa.me/917338630361" target="_blank" rel="noopener">● WhatsApp</a></article>
       <article class="card contact-card"><h3>Mr. Gagan</h3><div class="phone">9632664158</div><a class="wa" href="https://wa.me/919632664158" target="_blank" rel="noopener">● WhatsApp</a></article>
       <article class="card contact-card"><h3>Mr. Akash K</h3><div class="phone">8137840986</div><a class="wa" href="https://wa.me/918137840986" target="_blank" rel="noopener">● WhatsApp</a></article>
     </div>
-    <div class="card email" style="margin-top:18px">📧 <span>hp0361hp@gmail.com</span></div>
+    <div class="card email" style="margin-top:18px">📧 <span><a href="mailto:hp0361hp@gmail.com">hp0361hp@gmail.com</a></span></div>
   </div>
 </section>
 </main>
