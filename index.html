@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07101d">
 <meta name="description" content="Robo Race 2K26 — SDM Polytechnic Ujire, 574240. Build, race and conquer.">
 <link rel="icon" type="image/png" href="college-logo.png">
-<title>Robo Race 2K26 | SDM Polytechnic Ujire</title>
+<title>SDM Polytechnic Ujire | Robo Race 2K26 | ECE</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap');
 
@@ -278,26 +278,87 @@ body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;bac
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 @media(max-width:800px){#cursorGlow{display:none}.hero:before{animation-duration:24s}.scanlines{display:none}}
 
+
+/* ================= ECE ULTIMATE — LIGHTWEIGHT MOTION ================= */
+.brand-copy{display:flex;flex-direction:column;line-height:1.05;gap:4px}
+.brand-copy b{font:800 .76rem Orbitron,sans-serif;letter-spacing:.045em;color:#f2fbff}
+.brand-copy small{font:700 .61rem Rajdhani,sans-serif;letter-spacing:.18em;color:var(--cyan)}
+.nav-wrap:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--orange),var(--cyan),transparent);background-size:220% 100%;animation:topEnergy 5s linear infinite}
+@keyframes topEnergy{from{background-position:200% 0}to{background-position:-20% 0}}
+
+.hero{isolation:isolate}
+.hero-content{animation:heroEnter .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroEnter{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.hero h1{animation:titleGlow 4s ease-in-out infinite}
+@keyframes titleGlow{50%{text-shadow:0 0 45px rgba(32,223,255,.24),0 0 8px rgba(32,223,255,.16)}}
+.hero-kicker{position:relative;display:inline-block}
+.hero-kicker:after{content:"";position:absolute;left:0;bottom:-7px;width:34%;height:1px;background:linear-gradient(90deg,var(--orange),transparent);animation:kickerScan 2.8s ease-in-out infinite}
+@keyframes kickerScan{50%{width:100%;opacity:.45}100%{width:34%;opacity:1}}
+
+.ece-chip{position:relative;overflow:hidden}
+.ece-chip:after{content:"";position:absolute;top:0;bottom:0;width:80px;left:-90px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-20deg);animation:chipSweep 4.8s ease-in-out infinite}
+@keyframes chipSweep{0%,55%{left:-90px}75%,100%{left:110%}}
+
+.countdown .timebox{position:relative;overflow:hidden}
+.countdown .timebox:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(32,223,255,.08) 50%,transparent 65%);transform:translateX(-120%);animation:timeSweep 5s ease-in-out infinite}
+@keyframes timeSweep{0%,55%{transform:translateX(-120%)}80%,100%{transform:translateX(120%)}}
+
+.card,.ece-node,.skill-card,.member,.contact-card,.prize{transition:transform .35s cubic-bezier(.2,.75,.2,1),border-color .3s,box-shadow .3s}
+.card:hover,.ece-node:hover,.skill-card:hover,.member:hover,.contact-card:hover,.prize:hover{box-shadow:0 20px 65px rgba(0,0,0,.45),0 0 28px rgba(32,223,255,.07)}
+.card:hover .icon{animation:iconBob .7s ease both}
+@keyframes iconBob{50%{transform:translateY(-4px) scale(1.05)}}
+
+.section:before{content:"";position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(32,223,255,.18),rgba(255,122,24,.12),transparent);transform-origin:left;animation:sectionLine 7s ease-in-out infinite}
+@keyframes sectionLine{0%,100%{transform:scaleX(.35);opacity:.45}50%{transform:scaleX(1);opacity:1}}
+
+.form-shell{position:relative}
+.form-shell:after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);background-size:160% 100%;animation:formScan 3.8s linear infinite;opacity:.7}
+@keyframes formScan{from{background-position:160% 0}to{background-position:-60% 0}}
+
+footer{position:relative;overflow:hidden}
+footer:after{content:"01010100 01000011 01000101";position:absolute;right:-20px;bottom:7px;font:700 .62rem monospace;letter-spacing:.2em;color:rgba(32,223,255,.12);white-space:nowrap;animation:binaryDrift 9s linear infinite}
+@keyframes binaryDrift{from{transform:translateX(0)}50%{transform:translateX(-55px)}to{transform:translateX(0)}}
+
+#scrollProgress{position:fixed;left:0;top:0;height:2px;width:0;z-index:10001;pointer-events:none;background:linear-gradient(90deg,var(--cyan),var(--orange));box-shadow:0 0 10px rgba(32,223,255,.55)}
+#backTop{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border:1px solid rgba(32,223,255,.3);border-radius:50%;background:rgba(4,14,23,.78);backdrop-filter:blur(10px);color:var(--cyan);font-weight:900;opacity:0;transform:translateY(12px);pointer-events:none;z-index:9996;transition:.3s}
+#backTop.show{opacity:1;transform:none;pointer-events:auto}
+#backTop:hover{box-shadow:0 0 25px rgba(32,223,255,.18);transform:translateY(-3px)}
+@media(max-width:800px){
+  .brand-copy b{font-size:.68rem}.brand-copy small{font-size:.55rem}
+  #backTop{right:14px;bottom:14px}
+}
+@media(max-width:430px){.brand-copy b{font-size:.59rem}.brand-copy small{font-size:.49rem}}
+
+
+.ece-node{animation:nodeIdle 5s ease-in-out infinite}
+.ece-node:nth-child(2n){animation-delay:-1.2s}.ece-node:nth-child(3n){animation-delay:-2.4s}
+@keyframes nodeIdle{0%,100%{box-shadow:0 0 0 rgba(32,223,255,0)}50%{box-shadow:0 0 24px rgba(32,223,255,.055)}}
+
 </style>
 </head>
 <body>
+<div id="scrollProgress" aria-hidden="true"></div>
+<button id="backTop" aria-label="Back to top">↑</button>
 
 <header class="nav-wrap">
   <div class="container nav">
-    <a class="brand" href="#home" aria-label="Robo Race home">
+    <a class="brand" href="#home" aria-label="SDM Polytechnic Ujire — Robo Race 2K26 home">
       <img src="college-logo.png" alt="SDM Polytechnic Ujire logo">
-      <span>ROBO RACE 2K26</span>
+      <span class="brand-copy">
+        <b>SDM POLYTECHNIC UJIRE</b>
+        <small>ROBO RACE 2K26 · ECE</small>
+      </span>
     </a>
     <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#contact">Contact</a>
-      <a href="#registration">Registration Form</a>
-      <a href="#glimpses">Previous Event Glimpses</a>
-      <a href="#videos">Robo Car Building Video</a>
-      <a href="#ece-focus">ECE Focus</a>
-      <a href="#rules">Rules &amp; Regulations</a>
-      <a href="#prizes">Prizes</a>
       <a href="#about">About</a>
+      <a href="#prizes">Prizes</a>
+      <a href="#rules">Rules &amp; Regulations</a>
+      <a href="#videos">Robo Car Building Video</a>
+      <a href="#glimpses">Previous Event Glimpses</a>
+      <a href="#ece-focus">ECE Focus</a>
+      <a href="#registration">Registration Form</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -625,7 +686,23 @@ updateCountdown(); setInterval(updateCountdown,1000);
   addEventListener('resize',resize,{passive:true});resize();if(!reduce)raf=requestAnimationFrame(draw);
 
   const nav=document.querySelector('.nav-wrap');
-  function navState(){nav&&nav.classList.toggle('scrolled',scrollY>30)} addEventListener('scroll',navState,{passive:true});navState();
+  const progress=document.getElementById('scrollProgress');
+  const backTop=document.getElementById('backTop');
+  let scrollTick=false;
+  function navState(){
+    nav&&nav.classList.toggle('scrolled',scrollY>30);
+    if(!scrollTick){
+      requestAnimationFrame(()=>{
+        const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+        if(progress) progress.style.width=(Math.min(1,scrollY/max)*100)+'%';
+        if(backTop) backTop.classList.toggle('show',scrollY>650);
+        scrollTick=false;
+      });
+      scrollTick=true;
+    }
+  }
+  addEventListener('scroll',navState,{passive:true});navState();
+  backTop&&backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
   const glowEl=document.getElementById('cursorGlow');
   addEventListener('pointermove',e=>{if(innerWidth>800){glowEl.style.opacity='.9';glowEl.style.left=e.clientX+'px';glowEl.style.top=e.clientY+'px';}}, {passive:true});
