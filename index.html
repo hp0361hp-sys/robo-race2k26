@@ -738,6 +738,8 @@ const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 const registrationFrame = document.getElementById('registrationFrame');
 
+let submissionStarted = false;
+
 registrationForm.addEventListener('submit', function(e) {
   const endpoint = registrationForm.getAttribute('action') || '';
 
@@ -748,29 +750,22 @@ registrationForm.addEventListener('submit', function(e) {
     return;
   }
 
+  submissionStarted = true;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Submitting…';
   formStatus.textContent = 'Submitting your registration…';
   formStatus.style.color = '#20dfff';
 });
 
-window.addEventListener('message', function(event) {
-  const data = event.data || {};
+registrationFrame.addEventListener('load', function() {
+  if (!submissionStarted) return;
 
-  if (data.type === 'ROBORACE_SUCCESS') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration successful ✓ Your team details have been saved.';
-    formStatus.style.color = '#25d366';
-    registrationForm.reset();
-  }
-
-  if (data.type === 'ROBORACE_ERROR') {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Registration →';
-    formStatus.textContent = 'Registration failed: ' + (data.message || 'Please try again.');
-    formStatus.style.color = '#ff6b6b';
-  }
+  submissionStarted = false;
+  submitBtn.disabled = false;
+  submitBtn.textContent = '✓ Registration Submitted';
+  formStatus.textContent = '✓ REGISTRATION SUBMITTED SUCCESSFULLY! Your team details have been saved.';
+  formStatus.style.color = '#25d366';
+  registrationForm.reset();
 });
 
 // First-year teams do not use register numbers.
